@@ -2,13 +2,12 @@
  *  Array-based implementation of the ADT list.
  *  Lab 3: Lists and Polynomial Calculator
  *  COSC-2436 Data Structures
- *  Fall 2025
  */
 
 #ifndef ARRAY_LIST_H
 #define ARRAY_LIST_H
 
-#include "ListADT.h"
+#include "list_adt.h"
 #include <string>
 #include <stdexcept>
 
