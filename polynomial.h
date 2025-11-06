@@ -1,8 +1,7 @@
 /** @file Polynomial.h
  *  Polynomial Implementation Template
- *  Lab 3: Lists and Polynomial Calculator - Part 2B
+ *  Lab 3: Lists and Polynomial Calculator
  *  COSC-2436 Data Structures
- *  Fall 2025
  *
  *  TODO: Complete this Polynomial class implementation
  *  This file provides a starting structure for your Polynomial class.
@@ -44,34 +43,11 @@ private:
     // Example: LinkedList<Term> terms;
 
 public:
-    /**
-     * @brief Default constructor - creates zero polynomial
-     */
-    Polynomial() {
-        // TODO: Initialize your data members
-    }
-
-    /**
-     * @brief Destructor
-     */
-    ~Polynomial() {
-        // TODO: Clean up if needed (LinkedList handles its own cleanup)
-    }
-
-    /**
-     * @brief Copy constructor
-     */
-    Polynomial(const Polynomial& other) {
-        // TODO: Implement deep copy
-    }
-
-    /**
-     * @brief Assignment operator
-     */
-    Polynomial& operator=(const Polynomial& other) {
-        // TODO: Implement assignment with deep copy
-        return *this;
-    }
+    // Compiler-generated special members work fine since LinkedList handles its own copying
+    Polynomial() = default;
+    ~Polynomial() = default;
+    Polynomial(const Polynomial& other) = default;
+    Polynomial& operator=(const Polynomial& other) = default;
 
     /**
      * @brief Add a term to the polynomial

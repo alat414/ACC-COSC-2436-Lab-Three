@@ -1,6 +1,5 @@
 /** @file polynomial_tests.cpp
  *  Polynomial Class Unit Tests
- *  Lab 3: Lists and Polynomial Calculator - Part 2B Tests
  *  COSC-2436 Data Structures
  *  Fall 2025
  *

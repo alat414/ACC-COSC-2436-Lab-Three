@@ -8,17 +8,7 @@
 // PART 1: List ADT Unit Tests
 // ============================================================================
 
-void testListADT(ListADT<int>& list) 
-{
-    LinkedList <int itemtype testList>;
-    if (LinkedList != 0)
-    {
-        std::cout << "List is not empty " << std::endl;
-    }
-    else
-    {
-        std::cout << "List is empty"  << std::endl;
-    }
+void testListADT(ListADT<int>& list) {
     // TODO: finish
 }
 

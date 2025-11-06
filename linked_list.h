@@ -2,13 +2,12 @@
  *  Link-based implementation of the ADT list.
  *  Lab 3: Lists and Polynomial Calculator
  *  COSC-2436 Data Structures
- *  Fall 2025
  */
 
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 
-#include "ListADT.h"
+#include "list_adt.h"
 #include <string>
 #include <stdexcept>
 
@@ -98,6 +97,56 @@ public:
      *  Creates an empty list.
      *  @post List is empty with headPtr = nullptr and itemCount = 0. */
     LinkedList() : headPtr(nullptr), itemCount(0) {}
+
+    /** Copy constructor.
+     *  Creates a deep copy of another linked list. */
+    LinkedList(const LinkedList<ItemType>& other) : headPtr(nullptr), itemCount(0) {
+        // Copy all items from other list
+        for (int i = 1; i <= other.getLength(); i++) {
+            insert(i, other.getEntry(i));
+        }
+    }
+
+    /** Copy assignment operator.
+     *  Performs a deep copy of another linked list. */
+    LinkedList<ItemType>& operator=(const LinkedList<ItemType>& other) {
+        if (this != &other) {
+            clear();
+            for (int i = 1; i <= other.getLength(); i++) {
+                insert(i, other.getEntry(i));
+            }
+        }
+        return *this;
+    }
+
+    /** Move constructor.
+     *  Transfers ownership of resources from another linked list.
+     *  @post other is left in a valid but empty state. */
+    LinkedList(LinkedList<ItemType>&& other) noexcept
+        : headPtr(other.headPtr), itemCount(other.itemCount) {
+        // Leave other in valid empty state
+        other.headPtr = nullptr;
+        other.itemCount = 0;
+    }
+
+    /** Move assignment operator.
+     *  Transfers ownership of resources from another linked list.
+     *  @post other is left in a valid but empty state. */
+    LinkedList<ItemType>& operator=(LinkedList<ItemType>&& other) noexcept {
+        if (this != &other) {
+            // Release current resources
+            clear();
+
+            // Transfer ownership from other
+            headPtr = other.headPtr;
+            itemCount = other.itemCount;
+
+            // Leave other in valid empty state
+            other.headPtr = nullptr;
+            other.itemCount = 0;
+        }
+        return *this;
+    }
 
     /** Destructor.
      *  Deallocates all nodes in the chain. */
