@@ -7,7 +7,7 @@
 // ============================================================================
 // PART 1: List ADT Unit Tests
 // ============================================================================
-/*
+
 void testListADT(ListADT<int>& list) {
     // TODO: finish
     assert()
@@ -22,13 +22,7 @@ TEST_CASE("LinkedList Implementation") {
     LinkedList<int> list;
     testListADT(list);
 }
-*/
+
 // ============================================================================
 // END OF TESTS
 // ============================================================================
-#include <iostream>
-
-void checkcplusplus()
-{
-    std::cout << "Value of __cplusplus: " << __cplusplus << std::endl;
-}
