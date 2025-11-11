@@ -28,7 +28,7 @@ TEST_CASE("LinkedList Implementation") {
 // ============================================================================
 #include <iostream>
 
-int main() {
+void checkcplusplus()
+{
     std::cout << "Value of __cplusplus: " << __cplusplus << std::endl;
-    return 0;
 }
