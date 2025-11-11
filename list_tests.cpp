@@ -10,6 +10,7 @@
 
 void testListADT(ListADT<int>& list) {
     // TODO: finish
+    assert()
 }
 
 TEST_CASE("ArrayList Implementation") {
