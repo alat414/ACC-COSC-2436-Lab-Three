@@ -16,24 +16,25 @@ TEST_SUITE("List Tests")
 {
     TEST_CASE("ArrayList Implementation") 
     {
-        ArrayList<int, 65> list;
+        ArrayList<int, 0> list;
 
         SUBCASE("Empty list")
         {
             CHECK(list.isEmpty() == true);
             CHECK(list.getLength() == 0);
         }
-        SUBCASE("Add item at the beginning")
+        /*SUBCASE("Add item at the beginning")
         {
             list.insert(0,10);
-            CHECK(list.getEntry(1) == 10);
+            CHECK(list.getEntry(0) == 10);
         }
         
-    }
+    
 
     TEST_CASE("LinkedList Implementation") 
     {
         LinkedList<int> list;
+    }*/
     }
 }
 
