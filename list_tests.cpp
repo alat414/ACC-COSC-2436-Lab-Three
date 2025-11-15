@@ -23,6 +23,12 @@ TEST_SUITE("List Tests")
             CHECK(list.isEmpty() == true);
             CHECK(list.getLength() == 0);
         }
+
+        SUBCASE("Access empty list throws")
+        {
+            CHECK_THROWS_AS(list.getEntry(0), std::out_of_range);
+            CHECK_THROWS_AS(list.remove(0), std::out_of_range);
+        }
         /*SUBCASE("Add item at the beginning")
         {
             list.insert(0,10);
