@@ -16,7 +16,7 @@ TEST_SUITE("List Tests")
 {
     TEST_CASE("ArrayList Implementation") 
     {
-        ArrayList<int, 0> list;
+        ArrayList<int, 64> list;
 
         SUBCASE("Empty list")
         {
