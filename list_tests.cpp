@@ -18,6 +18,11 @@ TEST_SUITE("List Tests")
     {
         ArrayList<int, 65> list;
 
+        SUBCASE("Empty list")
+        {
+            CHECK(list.isEmpty() == true);
+            CHECK(list.getLength() == 0);
+        }
         SUBCASE("Add item at the beginning")
         {
             list.insert(0,10);
