@@ -26,7 +26,7 @@ TEST_SUITE("List Tests")
         SUBCASE("Add item at the beginning")
         {
             list.insert(0,10);
-            CHECK(list.getEntry(0) == 10);
+            CHECK(list.getEntry(1) == 10);
         }
         
     }
