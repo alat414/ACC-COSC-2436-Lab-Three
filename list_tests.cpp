@@ -10,7 +10,7 @@
 
 TEST_CASE("Simple Integer ArrayList")
 {
-    ArrayList<int, 10> list;
+    ArrayList<int, 64> list;
 
     SUBCASE("Freshly create list is empty")
     {
