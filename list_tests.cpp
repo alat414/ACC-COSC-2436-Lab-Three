@@ -18,6 +18,10 @@ TEST_SUITE("List Tests")
     {
         ArrayList<int, 64> list;
 
+        std::cout << "DEBUG: isEmpty function returns " << list.isEmpty() << std::endl;
+        std::cout << "DEBUG: getLength function returns " << list.getLength() << std::endl;
+
+
         SUBCASE("Empty list")
         {
             CHECK(list.isEmpty() == true);
@@ -42,6 +46,7 @@ TEST_SUITE("List Tests")
         LinkedList<int> list;
     }*/
     }
+    
 }
 
 
