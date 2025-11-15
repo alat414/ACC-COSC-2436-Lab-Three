@@ -9,19 +9,29 @@
 // ============================================================================
 
 void testListADT(ListADT<int>& list) {
-    // TODO: finish
-    assert()
+    
 }
 
-TEST_CASE("ArrayList Implementation") {
-    ArrayList<int, 64> list;
-    testListADT(list);
+TEST_SUITE("List Tests")
+{
+    TEST_CASE("ArrayList Implementation") 
+    {
+        ArrayList<int, 10> list;
+
+        SUBCASE("Add item at the beginning")
+        {
+            list.insert(0,10);
+            CHECK(list.getEntry(0) == 10);
+        }
+        
+    }
+
+    TEST_CASE("LinkedList Implementation") 
+    {
+        LinkedList<int> list;
+    }
 }
 
-TEST_CASE("LinkedList Implementation") {
-    LinkedList<int> list;
-    testListADT(list);
-}
 
 // ============================================================================
 // END OF TESTS
