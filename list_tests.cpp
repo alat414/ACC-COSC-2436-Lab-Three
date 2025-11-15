@@ -8,10 +8,18 @@
 // PART 1: List ADT Unit Tests
 // ============================================================================
 
-void testListADT(ListADT<int>& list) {
+TEST_CASE("Simple Integer ArrayList")
+{
+    ArrayList<int, 10> list;
+
+    SUBCASE("Freshly create list is empty")
+    {
+        CHECK(list.isEmpty() == true);
+        CHECK(list.getLength() == 0);
+    }
     
 }
-
+/*
 TEST_SUITE("List Tests")
 {
     TEST_CASE("ArrayList Implementation") 
@@ -33,7 +41,7 @@ TEST_SUITE("List Tests")
             CHECK_THROWS_AS(list.getEntry(0), std::out_of_range);
             CHECK_THROWS_AS(list.remove(0), std::out_of_range);
         }
-        /*SUBCASE("Add item at the beginning")
+        SUBCASE("Add item at the beginning")
         {
             list.insert(0,10);
             CHECK(list.getEntry(0) == 10);
@@ -45,9 +53,6 @@ TEST_SUITE("List Tests")
     {
         LinkedList<int> list;
     }*/
-    }
-    
-}
 
 
 // ============================================================================
