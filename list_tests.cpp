@@ -16,7 +16,7 @@ TEST_SUITE("List Tests")
 {
     TEST_CASE("ArrayList Implementation") 
     {
-        ArrayList<int, 10> list;
+        ArrayList<int, 65> list;
 
         SUBCASE("Add item at the beginning")
         {
