@@ -20,8 +20,8 @@ TEST_CASE("Simple Integer ArrayList")
     
     SUBCASE("Verifying the length of the ArrayList")
     {
-        CHECK(list.insert(2,3));
-        CHECK(list.getEntry(2) == 3);
+        CHECK(list.insert(1,3));
+        CHECK(list.getEntry(1) == 3);
     }
 }
 /*
