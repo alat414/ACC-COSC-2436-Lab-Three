@@ -15,13 +15,13 @@ TEST_CASE("Simple Integer ArrayList")
     SUBCASE("Freshly create list is empty")
     {
         CHECK(list.isEmpty() == true);
-        CHECK(list.getLength() == 64);
+        CHECK(list.getLength() == 0);
     }
     
     SUBCASE("Verifying the length of the ArrayList")
     {
         CHECK(list.insert(2,3)==true);
-        CHECK(list.getLength() == 65);
+        CHECK(list.getLength() == 2);
     }
 }
 /*
