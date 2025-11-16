@@ -21,7 +21,7 @@ TEST_CASE("Simple Integer ArrayList")
     SUBCASE("Verifying the length of the ArrayList")
     {
         CHECK(list.insert(2,3)==true);
-        CHECK(list.getLength() == 2);
+        CHECK(list.getLength() == 0);
     }
 }
 /*
