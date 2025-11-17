@@ -1,11 +1,9 @@
 /** @file calculator_main.cpp
- *  Part 4: Interactive Polynomial Calculator
  *  Lab 3: Lists and Polynomial Calculator
  *  COSC-2436 Data Structures
- *  Fall 2025
  *
  *  INSTRUCTIONS:
- *  1. Complete the Polynomial class in Polynomial.h (Part 2B)
+ *  1. Complete the Polynomial class in Polynomial.h
  *  2. Implement the TODO methods below to make the calculator functional
  *
  *  USAGE:
@@ -26,7 +24,7 @@
 #include "array_list.h"
 #include "linked_list.h"
 
-#include "Polynomial.h"
+#include "polynomial.h"
 
 using namespace std;
 
@@ -58,65 +56,52 @@ private:
     // Read numTerms pairs of (coefficient, exponent) from cin
     // Create a polynomial and store it in the map with the given name
     void createPolynomial(const string& name, int numTerms) {
-        cout << "TODO: Implement createPolynomial\n";
-        // Hint: Create a Polynomial object, read terms in a loop,
-        //       add each term to the polynomial, store in map
+
     }
 
     // TODO: Implement this method
     // Print the polynomial with the given name
     void printPolynomial(const string& name) {
-        cout << "TODO: Implement printPolynomial\n";
-        // Hint: Check if polynomial exists, then use toString()
     }
 
     // TODO: Implement this method
     // Evaluate the polynomial at the given x value
     void evaluatePolynomial(const string& name, double x) {
-        cout << "TODO: Implement evaluatePolynomial\n";
-        // Hint: Check if polynomial exists, call evaluate(x), print result
     }
 
     // TODO: Implement this method
     // Add two polynomials and store result
     void addPolynomials(const string& name1, const string& name2, const string& result) {
-        cout << "TODO: Implement addPolynomials\n";
-        // Hint: Check both polynomials exist, use operator+, store result
+
     }
 
     // TODO: Implement this method
     // Subtract two polynomials and store result
     void subtractPolynomials(const string& name1, const string& name2, const string& result) {
-        cout << "TODO: Implement subtractPolynomials\n";
-        // Hint: Check both polynomials exist, use operator-, store result
     }
 
     // TODO: Implement this method
     // Multiply two polynomials and store result
     void multiplyPolynomials(const string& name1, const string& name2, const string& result) {
-        cout << "TODO: Implement multiplyPolynomials\n";
-        // Hint: Check both polynomials exist, use operator*, store result
+
     }
 
     // TODO: Implement this method
     // Compute derivative of polynomial and store result
     void derivativePolynomial(const string& name, const string& result) {
-        cout << "TODO: Implement derivativePolynomial\n";
-        // Hint: Check polynomial exists, call derivative(), store result
+
     }
 
     // TODO: Implement this method
     // Show the degree of the polynomial
     void showDegree(const string& name) {
-        cout << "TODO: Implement showDegree\n";
-        // Hint: Check polynomial exists, call degree(), print result
+
     }
 
     // TODO: Implement this method
     // List all stored polynomials
     void listPolynomials() {
-        cout << "TODO: Implement listPolynomials\n";
-        // Hint: Iterate through map, print each polynomial with its name
+
     }
 
 public:
