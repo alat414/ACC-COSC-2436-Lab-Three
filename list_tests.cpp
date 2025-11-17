@@ -18,10 +18,21 @@ TEST_CASE("Simple Integer ArrayList")
         CHECK(list.getLength() == 0);
     }
     
-    SUBCASE("Verifying the length of the ArrayList")
+    SUBCASE("Verifying the insert and length of the ArrayList")
     {
         CHECK(list.insert(1,3));
         CHECK(list.getEntry(1) == 3);
+    }
+    SUBCASE("Verifying the insert, length and removal of items in arraylist")
+    {
+        CHECK(list.insert(1,6));
+        CHECK(list.insert(2,7));
+        CHECK(list.getLength()==2);
+        CHECK(list.getEntry(1)==6);
+        CHECK(list.getEntry(2)==7);
+        CHECK(list.remove(2));
+        CHECK(list.remove(1));
+        CHECK(list.isEmpty());
     }
 }
 /*
