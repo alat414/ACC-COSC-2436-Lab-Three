@@ -35,7 +35,7 @@ TEST_CASE("Simple Integer ArrayList")
         CHECK(list.isEmpty());
     }
 }
-*/
+
 TEST_CASE("Link List Implementation")
 {
     LinkedList<int> List;
@@ -52,7 +52,26 @@ TEST_CASE("Link List Implementation")
         CHECK_THROWS(List.getEntry(0));
     }
 }
+*/
+TEST_CASE("Test for remove function and replace function calls")
+{
+    LinkedList<int> ListOne;
 
+    ListOne.insert(1,17);
+    ListOne.insert(2,34);
+
+    SUBCASE("testing for items in link list")
+    {
+        CHECK(ListOne.getEntry(1)==17);
+        CHECK(ListOne.getEntry(2)==34);
+    }
+    ListOne.replace(2,24);
+    SUBCASE("testing for replacing items in link list")
+    {
+        CHECK(ListOne.getEntry(2)==24);
+        CHECK(ListOne.getLength()==2);
+    }
+}
 
 
 // ============================================================================
