@@ -19,7 +19,8 @@
  *  A node in a linked chain.
  *  @tparam T The type of value stored in the node. */
 template<typename T>
-class Node {
+class Node 
+{
 private:
     T value;            ///< Data value stored in the node
     Node *next;         ///< Pointer to next node in the chain
@@ -36,25 +37,29 @@ public:
 
     /** Gets the data value stored in this node.
      *  @return The data value. */
-    T getItem() const {
+    T getItem() const 
+    {
         return value;
     }
 
     /** Gets the pointer to the next node.
      *  @return Pointer to the next node in the chain. */
-    Node *getNext() const {
+    Node *getNext() const 
+    {
         return next;
     }
 
     /** Sets the pointer to the next node.
      *  @param n Pointer to the next node. */
-    void setNext(Node *n) {
+    void setNext(Node *n) 
+    {
         next = n;
     }
 
     /** Sets the data value for this node.
      *  @param v The new data value. */
-    void setItem(const T &v) {
+    void setItem(const T &v) 
+    {
         value = v;
     }
 }; // end Node
@@ -79,9 +84,12 @@ private:
      *  @param position The number of the desired node (1-based).
      *  @return A pointer to the node at the given position.
      *  @throw out_of_range if position is invalid. */
-    Node<ItemType> *getNodeAt(int position) const {
+
+    Node<ItemType> *getNodeAt(int position) const 
+    {
         // Debugging check of precondition
-        if (position < 1 || position > itemCount) {
+        if (position < 1 || position > itemCount) 
+        {
             throw std::out_of_range("Position out of range.");
         }
 
@@ -100,19 +108,24 @@ public:
 
     /** Copy constructor.
      *  Creates a deep copy of another linked list. */
-    LinkedList(const LinkedList<ItemType>& other) : headPtr(nullptr), itemCount(0) {
+    LinkedList(const LinkedList<ItemType>& other) : headPtr(nullptr), itemCount(0) 
+    {
         // Copy all items from other list
-        for (int i = 1; i <= other.getLength(); i++) {
+        for (int i = 1; i <= other.getLength(); i++) 
+        {
             insert(i, other.getEntry(i));
         }
     }
 
     /** Copy assignment operator.
      *  Performs a deep copy of another linked list. */
-    LinkedList<ItemType>& operator=(const LinkedList<ItemType>& other) {
-        if (this != &other) {
+    LinkedList<ItemType>& operator=(const LinkedList<ItemType>& other) 
+    {
+        if (this != &other) 
+        {
             clear();
-            for (int i = 1; i <= other.getLength(); i++) {
+            for (int i = 1; i <= other.getLength(); i++) 
+            {
                 insert(i, other.getEntry(i));
             }
         }
@@ -123,7 +136,8 @@ public:
      *  Transfers ownership of resources from another linked list.
      *  @post other is left in a valid but empty state. */
     LinkedList(LinkedList<ItemType>&& other) noexcept
-        : headPtr(other.headPtr), itemCount(other.itemCount) {
+        : headPtr(other.headPtr), itemCount(other.itemCount) 
+    {
         // Leave other in valid empty state
         other.headPtr = nullptr;
         other.itemCount = 0;
@@ -132,8 +146,10 @@ public:
     /** Move assignment operator.
      *  Transfers ownership of resources from another linked list.
      *  @post other is left in a valid but empty state. */
-    LinkedList<ItemType>& operator=(LinkedList<ItemType>&& other) noexcept {
-        if (this != &other) {
+    LinkedList<ItemType>& operator=(LinkedList<ItemType>&& other) noexcept 
+    {
+        if (this != &other) 
+        {
             // Release current resources
             clear();
 
@@ -150,19 +166,22 @@ public:
 
     /** Destructor.
      *  Deallocates all nodes in the chain. */
-    ~LinkedList() {
+    ~LinkedList() 
+    {
         clear();
     } // end destructor
 
     /** Tests whether this list is empty.
      *  @return True if the list is empty; otherwise returns false. */
-    bool isEmpty() const override {
+    bool isEmpty() const override 
+    {
         return itemCount == 0;
     }
 
     /** Gets the current number of entries in this list.
      *  @return The integer number of entries currently in the list. */
-    int getLength() const override {
+    int getLength() const override 
+    {
         return itemCount;
     }
 
@@ -173,18 +192,22 @@ public:
      *  @param newPosition The list position at which to insert newEntry (1-based).
      *  @param newEntry The object to insert into the list.
      *  @return True if insertion is successful, false otherwise. */
-    bool insert(int newPosition, const ItemType &newEntry) override {
+    bool insert(int newPosition, const ItemType &newEntry) override 
+    {
         bool ableToInsert = (newPosition >= 1) &&
                             (newPosition <= itemCount + 1);
-        if (ableToInsert) {
+        if (ableToInsert) 
+        {
             // Create a new node containing the new entry
             Node<ItemType> *newNodePtr = new Node<ItemType>(newEntry);
             // Attach new node to chain
-            if (newPosition == 1) {
+            if (newPosition == 1) 
+            {
                 // Insert new node at beginning of chain
                 newNodePtr->setNext(headPtr);
                 headPtr = newNodePtr;
-            } else {
+            } else 
+            {
                 // Find node that will be before new node
                 Node<ItemType> *prevPtr = getNodeAt(newPosition - 1);
                 // Insert new node after node to which prevPtr points
@@ -202,15 +225,20 @@ public:
      *     and the node is deallocated.
      *  @param position The list position of the entry to remove.
      *  @return True if removal is successful, false otherwise. */
-    bool remove(int position) override {
+    bool remove(int position) override 
+    {
         bool ableToRemove = (position >= 1) && (position <= itemCount);
-        if (ableToRemove) {
+        if (ableToRemove) 
+        {
             Node<ItemType> *curPtr = nullptr;
-            if (position == 1) {
+            if (position == 1) 
+            {
                 // Remove the first node in the chain
                 curPtr = headPtr; // Save pointer to node
                 headPtr = headPtr->getNext();
-            } else {
+            } 
+            else 
+            {
                 // Find node that is before the one to delete
                 Node<ItemType> *prevPtr = getNodeAt(position - 1);
                 // Point to node to delete
@@ -232,7 +260,8 @@ public:
      *  @pre None.
      *  @post List contains no entries and getLength() returns 0.
      *     All nodes are deallocated. */
-    void clear() override {
+    void clear() override 
+    {
         while (!isEmpty())
             remove(1);
     } // end clear
@@ -243,13 +272,17 @@ public:
      *  @param position The list position of the entry to retrieve.
      *  @return The entry at position position in the list.
      *  @throw invalid_argument if position < 1 or position > getLength(). */
-    ItemType getEntry(int position) const override {
+    ItemType getEntry(int position) const override 
+    {
         // Enforce precondition
         bool ableToGet = (position >= 1) && (position <= itemCount);
-        if (ableToGet) {
+        if (ableToGet) 
+        {
             Node<ItemType> *nodePtr = getNodeAt(position);
             return nodePtr->getItem();
-        } else {
+        } 
+        else 
+        {
             std::string message = "getEntry() called with an empty list or ";
             message = message + "invalid position.";
             throw std::invalid_argument(message);
@@ -262,7 +295,8 @@ public:
      *  @param position The list position of the entry to replace.
      *  @param newEntry The replacement entry.
      *  @throw out_of_range if position is invalid. */
-    void replace(int position, const ItemType &newEntry) override {
+    void replace(int position, const ItemType &newEntry) override 
+    {
         Node<ItemType> *n = getNodeAt(position);
         n->setItem(newEntry);
     } // end replace
