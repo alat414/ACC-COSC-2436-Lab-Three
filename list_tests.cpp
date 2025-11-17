@@ -46,6 +46,8 @@ TEST_CASE("Link List Implementation")
         CHECK(List.insert(2,3));
         CHECK(List.getEntry(2)==3);
         CHECK(List.getLength()==2);
+        CHECK(List.remove(2));
+        CHECK(List.remove(1));
     }
 }
 
