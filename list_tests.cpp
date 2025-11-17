@@ -7,8 +7,8 @@
 // ============================================================================
 // PART 1: List ADT Unit Tests
 // ============================================================================
-/*
-TEST_CASE("Simple Integer ArrayList")
+
+TEST_CASE("Testing ArrayList Implementations")
 {
     ArrayList<int, 64> list;
 
@@ -52,7 +52,7 @@ TEST_CASE("Link List Implementation")
         CHECK_THROWS(List.getEntry(0));
     }
 }
-*/
+
 TEST_CASE("Test for remove function and replace function calls")
 {
     LinkedList<int> ListOne;
