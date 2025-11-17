@@ -49,6 +49,7 @@ TEST_CASE("Link List Implementation")
         CHECK(List.remove(2));
         CHECK(List.remove(1));  
         CHECK(List.isEmpty()==true);
+        CHECK_THROWS(List.getEntry(0));
     }
 }
 
