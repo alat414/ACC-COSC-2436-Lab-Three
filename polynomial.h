@@ -199,6 +199,21 @@ public:
      */
     double getCoefficient(int exponent) const {
         // TODO: Implement getCoefficient
+        if (terms.isEmpty())
+        {
+            return 0.0;
+        }
+
+        for (int i = 0; i < terms.getLength(); i++)
+        {
+            Term currentTerm = terms.getEntry(i);
+
+            if (currentTerm.exponent == exponent)
+            {
+                return currentTerm.exponent;
+            }
+        }
+        
         return 0.0;  // Placeholder
     }
 
