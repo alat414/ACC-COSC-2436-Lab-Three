@@ -25,6 +25,15 @@
 //         : coefficient(coef), exponent(exp) {}
 // };
 
+struct Term
+{
+    double coefficient;
+    int exponent;
+
+    Term(double coefficient = 0.0, int exponent= 0)
+    : coefficient(coefficient), exponent(exponent)
+    {}
+};
 /**
  * @brief Polynomial class that stores terms in a LinkedList
  *
@@ -36,11 +45,14 @@
  * - Support evaluation at a given x value
  * - Support derivative computation
  */
-class Polynomial {
+class Polynomial 
+{
 private:
     // TODO: Declare your data member(s)
     // Hint: Use LinkedList<Term> to store the polynomial terms
     // Example: LinkedList<Term> terms;
+    LinkedList<Term> terms;
+
 
 public:
     // Compiler-generated special members work fine since LinkedList handles its own copying
@@ -60,7 +72,8 @@ public:
      * - Maintain terms in descending order by exponent
      * - If combined coefficient becomes 0.0, remove the term
      */
-    void addTerm(double coefficient, int exponent) {
+    void addTerm(double coefficient, int exponent) 
+    {
         // TODO: Implement addTerm
         // Steps:
         // 1. Check if coefficient is zero - if so, return
@@ -68,6 +81,44 @@ public:
         // 3. If found, add coefficients
         // 4. If not found, insert in correct position (descending order)
         // 5. If resulting coefficient is zero, remove the term
+
+        if (coefficient <= 0)
+        {
+            return;
+        }
+        Term newTerm(coefficient, exponent);
+
+        if(terms.isEmpty())
+        {
+            terms.insert(0,newTerm);
+            return;
+        }
+
+        for (int i = 0; i < terms.getLength(); i++)
+        {
+            Term currentTerm = terms.getEntry(i);
+
+            if (currentTerm.exponent == exponent)
+            {
+                double newCoefficient = currentTerm.coefficient + coefficient;
+
+                if(newCoefficient == 0.0)
+                {
+                    terms.remove(i);
+                }
+                else
+                {
+                    terms.replace(i, Term(newCoefficient,exponent));
+                }
+                return;
+            }
+            if(exponent > currentTerm.exponent)
+            {
+                terms.insert(i, newTerm);
+                return;
+            }
+        }
+        terms.insert(terms.getLength(), newTerm);
     }
 
     /**
@@ -77,9 +128,43 @@ public:
      *
      * Hint: Use Horner's method or simply sum each term: coef * x^exp
      */
-    double evaluate(double x) const {
+    double evaluate(double x) const 
+    {
         // TODO: Implement evaluate
-        return 0.0;  // Placeholder
+
+        if (terms.isEmpty())
+        {
+            return 0.0;
+        }
+        double result;
+
+        int currentExponent = terms.getEntry(0).exponent;
+
+        for (int i = 0; i < terms.getLength(); i++)
+        {
+            Term item_term = terms.getEntry(i);
+            while(currentExponent > item_term.exponent)
+            {
+                result *= x;
+                currentExponent--;
+            }
+
+            result += item_term.coefficient;
+            if (currentExponent > 0)
+            {
+                result *= x;
+                currentExponent--;
+            }
+
+        }
+        while(currentExponent > 0)
+        {
+            result *= x;
+            currentExponent--;
+        }
+
+        
+        return result;  // Placeholder
     }
 
     /**
