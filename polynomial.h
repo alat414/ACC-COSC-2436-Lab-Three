@@ -163,7 +163,6 @@ public:
             currentExponent--;
         }
 
-        
         return result;  // Placeholder
     }
 
