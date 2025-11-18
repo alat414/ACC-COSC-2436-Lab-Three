@@ -174,7 +174,22 @@ public:
         // TODO: Implement degree
         // Hint: If list is empty, return -1
         //       Otherwise, return exponent of first term (highest degree)
-        return -1;  // Placeholder
+        
+        if (terms.isEmpty())
+        {
+            return -1;
+        }
+        int highestDegreeVariable = terms.getEntry(0).exponent;
+
+        for (int i = 0; i < terms.getLength(); i++)
+        {
+            int currentExponent = terms.getEntry(i).exponent;
+            if (currentExponent > highestDegreeVariable)
+            {
+                highestDegreeVariable = currentExponent;
+            }
+        }    
+        return highestDegreeVariable;  // Placeholder
     }
 
     /**
