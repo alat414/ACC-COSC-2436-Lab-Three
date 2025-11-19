@@ -277,7 +277,7 @@ public:
             return "0";
         }
 
-        string result;
+        std::string result;
 
         for (int i = 0; i < terms.getLength(); i++)
         {
@@ -307,7 +307,7 @@ public:
             }
             else
             {
-                if (absCoeff != 0.0)
+                if (absCoeff != 1.0)
                 {
                     result += formatCoefficient(absCoeff);
                 }
