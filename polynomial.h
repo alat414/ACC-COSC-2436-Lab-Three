@@ -221,9 +221,24 @@ public:
      * @brief Check if polynomial is the zero polynomial
      * @return true if no terms exist
      */
-    bool isZero() const {
+    bool isZero() const 
+    {
         // TODO: Implement isZero
-        return true;  // Placeholder
+
+        if (terms.isEmpty())
+        {
+            return true;  // Placeholder
+        }
+
+        for (int i = 0; i < terms.getLength(); i++)
+        {
+            if(terms.getEntry(i).coefficient != 0.0)
+            {
+                return false;
+            }
+        }
+        return true;
+        
     }
 
     /**
