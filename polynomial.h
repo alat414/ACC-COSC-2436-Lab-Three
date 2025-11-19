@@ -14,6 +14,8 @@
 #include <string>
 #include <sstream>
 #include <cmath>
+#include <typeinfo>
+#include <algorithm>
 
 // TODO: Define your Term structure
 // Suggested structure:
@@ -253,9 +255,72 @@ public:
      * - Omit "x^0" for constant: "5" not "5x^0"
      * - Special case: return "0" for zero polynomial
      */
-    std::string toString() const {
+
+    //String function used for simplifying the coefficients of the 
+    //polynomial function. 
+    std::string formatCoefficient(double coeff) const
+    {
+        std::string str = std::to_string(coeff);
+        str.erase(str.find_last_not_of('0') + 1, std::string::npos);
+        if (str.back() == '.')
+        {
+            str.pop_back();
+        }
+        return str;
+    }
+
+    std::string toString() const 
+    {
         // TODO: Implement toString
-        return "0";  // Placeholder
+        if(terms.isEmpty())
+        {
+            return "0";
+        }
+
+        string result;
+
+        for (int i = 0; i < terms.getLength(); i++)
+        {
+            Term variable = terms.getEntry(i);
+
+            if (variable.coefficient == 0.0)
+            {
+                continue;
+            }
+
+            if (!result.empty())
+            {
+                result += (variable.coefficient > 0) ? " + " : " - ";
+            }
+
+            else if(variable.coefficient < 0)
+            {
+                result += "-";
+            }
+
+            double absCoeff = std::abs(variable.coefficient);
+
+            if (variable.exponent == 0)
+            {
+                result += formatCoefficient(absCoeff);
+
+            }
+            else
+            {
+                if (absCoeff != 0.0)
+                {
+                    result += formatCoefficient(absCoeff);
+                }
+
+                result += "x";
+                if (variable.exponent > 1)
+                {
+                    result += "^" + std::to_string(variable.exponent);
+                }
+            }
+        
+        }
+        return result.empty() ? "0" : result;  // Placeholder
     }
 
     /**
