@@ -201,7 +201,7 @@ TEST_CASE("Polynomial - Multiplication by Zero") {
     Polynomial product = p1 * p2;
     CHECK(product.isZero());
 }
-/*
+
 TEST_CASE("Polynomial - Multiplication Trinomials") {
     Polynomial p1, p2;
     p1.addTerm(1.0, 2);  // x^2
@@ -218,7 +218,7 @@ TEST_CASE("Polynomial - Multiplication Trinomials") {
     CHECK(product.getCoefficient(1) == doctest::Approx(3.0));
     CHECK(product.getCoefficient(0) == doctest::Approx(1.0));
 }
-
+/*
 TEST_CASE("Polynomial - Derivative Constant") {
     Polynomial p;
     p.addTerm(5.0, 0);  // 5
