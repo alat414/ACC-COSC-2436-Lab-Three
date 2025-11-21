@@ -79,7 +79,7 @@ TEST_CASE("Polynomial - Evaluation at Zero") {
 
     CHECK(p.evaluate(0.0) == doctest::Approx(1.0));
 }
-*/
+
 TEST_CASE("Polynomial - Evaluation at One") {
     Polynomial p;  // 3x^2 + 2x + 1
     p.addTerm(3.0, 2);
@@ -88,7 +88,7 @@ TEST_CASE("Polynomial - Evaluation at One") {
 
     CHECK(p.evaluate(1.0) == doctest::Approx(6.0));
 }
-/*
+*/
 TEST_CASE("Polynomial - Evaluation at Two") {
     Polynomial p;  // 3x^2 + 2x + 1
     p.addTerm(3.0, 2);
@@ -97,7 +97,7 @@ TEST_CASE("Polynomial - Evaluation at Two") {
 
     CHECK(p.evaluate(2.0) == doctest::Approx(17.0));
 }
-
+/*
 TEST_CASE("Polynomial - Evaluation Negative x") {
     Polynomial p;  // x^2 + 2x + 1
     p.addTerm(1.0, 2);
