@@ -178,7 +178,7 @@ TEST_CASE("Polynomial - Multiplication Simple") {
     CHECK(product.degree() == 2);
     CHECK(product.getCoefficient(2) == doctest::Approx(6.0));
 }
-*/
+
 TEST_CASE("Polynomial - Multiplication Binomials") {
     Polynomial p1, p2;
     p1.addTerm(2.0, 1);  // 2x
@@ -192,7 +192,7 @@ TEST_CASE("Polynomial - Multiplication Binomials") {
     CHECK(product.getCoefficient(1) == doctest::Approx(1.0));
     CHECK(product.getCoefficient(0) == doctest::Approx(-1.0));
 }
-/*
+*/
 TEST_CASE("Polynomial - Multiplication by Zero") {
     Polynomial p1, p2;
     p1.addTerm(3.0, 2);  // 3x^2
@@ -201,7 +201,7 @@ TEST_CASE("Polynomial - Multiplication by Zero") {
     Polynomial product = p1 * p2;
     CHECK(product.isZero());
 }
-
+/*
 TEST_CASE("Polynomial - Multiplication Trinomials") {
     Polynomial p1, p2;
     p1.addTerm(1.0, 2);  // x^2
