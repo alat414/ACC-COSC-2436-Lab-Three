@@ -91,11 +91,11 @@ public:
 
         if(terms.isEmpty())
         {
-            terms.insert(0,newTerm);
+            terms.insert(1,newTerm);
             return;
         }
 
-        for (int i = 0; i < terms.getLength(); i++)
+        for (int i = 1; i < terms.getLength(); i++)
         {
             Term currentTerm = terms.getEntry(i);
 
@@ -119,7 +119,7 @@ public:
                 return;
             }
         }
-        terms.insert(terms.getLength(), newTerm);
+        terms.insert(terms.getLength() + 1, newTerm);
     }
 
     /**
@@ -141,7 +141,7 @@ public:
 
         int currentExponent = terms.getEntry(0).exponent;
 
-        for (int i = 0; i < terms.getLength(); i++)
+        for (int i = 1; i < terms.getLength(); i++)
         {
             Term item_term = terms.getEntry(i);
 
@@ -163,7 +163,7 @@ public:
         {
             return -1;
         }   
-        return terms.getEntry(0).exponent;  // Placeholder
+        return terms.getEntry(1).exponent;  // Placeholder
     }
 
     /**
@@ -178,7 +178,7 @@ public:
             return 0.0;
         }
 
-        for (int i = 0; i < terms.getLength(); i++)
+        for (int i = 1; i < terms.getLength(); i++)
         {
             Term currentTerm = terms.getEntry(i);
 
@@ -229,7 +229,7 @@ public:
 
         bool firstTerm = true;
 
-        for (int i = 0; i <= terms.getLength(); i++)
+        for (int i = 1; i <= terms.getLength(); i++)
         {
             Term following_term = terms.getEntry(i);
 
@@ -291,7 +291,7 @@ public:
             return derr_function;
         }
         
-        for (int i = 0; i < terms.getLength(); i++)
+        for (int i = 1; i < terms.getLength(); i++)
         {
             Term startingFunction = terms.getEntry(i);
 
@@ -324,7 +324,7 @@ public:
         // TODO: Implement operator+
         Polynomial result_function = *this;
 
-        for (int i = 0; i < other.terms.getLength(); i++)
+        for (int i = 1; i < other.terms.getLength(); i++)
         {
             Term sum_result = other.terms.getEntry(i);
             result_function.addTerm(sum_result.coefficient,sum_result.exponent);
@@ -342,7 +342,7 @@ public:
         // TODO: Implement operator+
         Polynomial result_function = *this;
 
-        for (int i = 0; i < other.terms.getLength(); i++)
+        for (int i = 1; i < other.terms.getLength(); i++)
         {
             Term difference_result = other.terms.getEntry(i);
             result_function.addTerm(-difference_result.coefficient,difference_result.exponent);
@@ -363,11 +363,11 @@ public:
         // TODO: Implement operator*
         Polynomial result_function;
 
-        for (int i = 0; i < terms.getLength(); i++)
+        for (int i = 1; i < terms.getLength(); i++)
         {
             Term poly_func_one = terms.getEntry(i);
 
-            for (int j = 0; j < other.terms.getLength(); j++)
+            for (int j = 1; j < other.terms.getLength(); j++)
             {
                 Term poly_func_two = other.terms.getEntry(j);
 
