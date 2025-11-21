@@ -236,7 +236,7 @@ TEST_CASE("Polynomial - Derivative Linear") {
     CHECK(deriv.degree() == 0);
     CHECK(deriv.getCoefficient(0) == doctest::Approx(3.0));
 }
-*/
+
 TEST_CASE("Polynomial - Derivative Quadratic") {
     Polynomial p;
     p.addTerm(2.0, 2);  // 2x^2
@@ -248,7 +248,7 @@ TEST_CASE("Polynomial - Derivative Quadratic") {
     CHECK(deriv.getCoefficient(1) == doctest::Approx(4.0));
     CHECK(deriv.getCoefficient(0) == doctest::Approx(3.0));
 }
-/*
+*/
 TEST_CASE("Polynomial - Derivative Cubic") {
     Polynomial p;  // 3x^3 + 2x^2 + x
     p.addTerm(3.0, 3);
@@ -260,7 +260,7 @@ TEST_CASE("Polynomial - Derivative Cubic") {
     CHECK(deriv.getCoefficient(1) == doctest::Approx(4.0));
     CHECK(deriv.getCoefficient(0) == doctest::Approx(1.0));
 }
-
+/*
 TEST_CASE("Polynomial - Derivative Zero Polynomial") {
     Polynomial p;  // 0
 
