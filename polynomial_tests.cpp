@@ -15,6 +15,13 @@
 // PART 2B: Polynomial Class Tests
 // ============================================================================
 
+TEST_CASE("Polynomial - Zero Polynomial") 
+{
+    Polynomial p;
+    CHECK(p.isZero());
+    CHECK(p.degree() == -1);
+}
+
 TEST_CASE("Polynomial - Add Single Term") {
     Polynomial p;
     p.addTerm(3.0, 2);
@@ -22,6 +29,17 @@ TEST_CASE("Polynomial - Add Single Term") {
     CHECK_FALSE(p.isZero());
     CHECK(p.degree() == 2);
     CHECK(p.getCoefficient(2) == doctest::Approx(3.0));
+}
+
+TEST_CASE("Polynomial - Zero Coefficients Excluded") 
+{
+    Polynomial p;
+    p.addTerm(0.0, 5);  // Should not be added
+    CHECK(p.isZero());
+
+    p.addTerm(3.0, 2);
+    p.addTerm(0.0, 3);  // Should not be added
+    CHECK(p.degree() == 2);
 }
 
 TEST_CASE("Polynomial - Like Terms Combined") {
@@ -174,6 +192,17 @@ TEST_CASE("Polynomial - Multiplication Binomials") {
     CHECK(product.getCoefficient(0) == doctest::Approx(-1.0));
 }
 
+
+TEST_CASE("Polynomial - Multiplication by Zero") 
+{
+    Polynomial p1, p2;
+    p1.addTerm(3.0, 2);  // 3x^2
+    // p2 is zero polynomial
+
+    Polynomial product = p1 * p2;
+    CHECK(product.isZero());
+}
+
 TEST_CASE("Polynomial - Multiplication Trinomials") {
     Polynomial p1, p2;
     p1.addTerm(1.0, 2);  // x^2
@@ -189,6 +218,15 @@ TEST_CASE("Polynomial - Multiplication Trinomials") {
     CHECK(product.getCoefficient(2) == doctest::Approx(3.0));
     CHECK(product.getCoefficient(1) == doctest::Approx(3.0));
     CHECK(product.getCoefficient(0) == doctest::Approx(1.0));
+}
+
+TEST_CASE("Polynomial - Derivative Constant") 
+{
+    Polynomial p;
+    p.addTerm(5.0, 0);  // 5
+
+    Polynomial deriv = p.derivative();  // 0
+    CHECK(deriv.isZero());
 }
 
 TEST_CASE("Polynomial - Derivative Linear") {
@@ -223,6 +261,69 @@ TEST_CASE("Polynomial - Derivative Cubic") {
     CHECK(deriv.getCoefficient(2) == doctest::Approx(9.0));
     CHECK(deriv.getCoefficient(1) == doctest::Approx(4.0));
     CHECK(deriv.getCoefficient(0) == doctest::Approx(1.0));
+}
+TEST_CASE("Polynomial - Derivative Zero Polynomial") 
+{
+    Polynomial p;  // 0
+
+    Polynomial deriv = p.derivative();
+    CHECK(deriv.isZero());
+}
+
+TEST_CASE("Polynomial - toString Zero") 
+{
+    Polynomial p;
+    std::string str = p.toString();
+    CHECK(str == "0");
+}
+
+TEST_CASE("Polynomial - toString Single Term") 
+{
+    Polynomial p;
+    p.addTerm(5.0, 3);
+    std::string str = p.toString();
+    // Could be "5x^3" or "5x³" depending on implementation
+    CHECK(str.find("5") != std::string::npos);
+    CHECK(str.find("3") != std::string::npos);
+}
+
+TEST_CASE("Polynomial - toString Multiple Terms") 
+{
+    Polynomial p;  // 3x^2 + 2x + 1
+    p.addTerm(3.0, 2);
+    p.addTerm(2.0, 1);
+    p.addTerm(1.0, 0);
+
+    std::string str = p.toString();
+    CHECK(str.length() > 0);
+    // String should contain the coefficients
+    CHECK(str.find("3") != std::string::npos);
+    CHECK(str.find("2") != std::string::npos);
+    CHECK(str.find("1") != std::string::npos);
+}
+
+TEST_CASE("Polynomial - Copy Constructor") 
+{
+    Polynomial p1;
+    p1.addTerm(3.0, 2);
+    p1.addTerm(2.0, 1);
+
+    Polynomial p2(p1);
+    CHECK(p2.degree() == p1.degree());
+    CHECK(p2.getCoefficient(2) == p1.getCoefficient(2));
+    CHECK(p2.getCoefficient(1) == p1.getCoefficient(1));
+}
+
+TEST_CASE("Polynomial - Assignment Operator") 
+{
+    Polynomial p1, p2;
+    p1.addTerm(3.0, 2);
+    p1.addTerm(2.0, 1);
+
+    p2 = p1;
+    CHECK(p2.degree() == p1.degree());
+    CHECK(p2.getCoefficient(2) == p1.getCoefficient(2));
+    CHECK(p2.getCoefficient(1) == p1.getCoefficient(1));
 }
 
 TEST_CASE("Polynomial - Chained Operations") {
