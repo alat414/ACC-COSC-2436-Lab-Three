@@ -14,28 +14,19 @@
 #include <string>
 #include <sstream>
 #include <cmath>
-#include <iostream>
-
 
 // TODO: Define your Term structure
 // Suggested structure:
-// struct Term {
-//     double coefficient;
-//     int exponent;
-//
-//     Term(double coef = 0.0, int exp = 0)
-//         : coefficient(coef), exponent(exp) {}
-// };
 
-struct Term
+struct Term 
 {
     double coefficient;
     int exponent;
 
-    Term(double coefficient = 0.0, int exponent= 0)
-    : coefficient(coefficient), exponent(exponent)
-    {}
-};
+    Term(double coef = 0.0, int exp = 0)
+        : coefficient(coef), exponent(exp) {}
+ };
+
 /**
  * @brief Polynomial class that stores terms in a LinkedList
  *
@@ -47,21 +38,20 @@ struct Term
  * - Support evaluation at a given x value
  * - Support derivative computation
  */
-class Polynomial 
-{
+class Polynomial {
 private:
     // TODO: Declare your data member(s)
     // Hint: Use LinkedList<Term> to store the polynomial terms
     // Example: LinkedList<Term> terms;
+
     LinkedList<Term> terms;
-
-
 public:
     // Compiler-generated special members work fine since LinkedList handles its own copying
     Polynomial() = default;
     ~Polynomial() = default;
     Polynomial(const Polynomial& other) = default;
     Polynomial& operator=(const Polynomial& other) = default;
+
 
     /**
      * @brief Add a term to the polynomial
@@ -83,74 +73,43 @@ public:
         // 3. If found, add coefficients
         // 4. If not found, insert in correct position (descending order)
         // 5. If resulting coefficient is zero, remove the term
-
-        std::cout << "=== DEBUG addTerm(" << coefficient << ", " << exponent << ") ===" << std::endl;
-        std::cout << "Initial list length: " << terms.getLength() << std::endl;
-    
         if (coefficient == 0.0)
-            {
-            std::cout << "Skipping zero coefficient" << std::endl;
+        {
             return;
         }
-        
         Term newTerm(coefficient, exponent);
 
         if(terms.isEmpty())
         {
-            std::cout << "List empty - inserting at position 1" << std::endl;
-            terms.insert(1, newTerm);
-            std::cout << "After insert - list length: " << terms.getLength() << std::endl;
+            terms.insert(1, newTerm);  
             return;
         }
 
-        std::cout << "List not empty - checking existing terms:" << std::endl;
-        for (int i = 1; i < terms.getLength(); i++)
+        for (int i = 1; i <= terms.getLength(); i++) 
         {
             Term currentTerm = terms.getEntry(i);
 
-            std::cout << "  Position " << i << ": coeff=" << currentTerm.coefficient 
-                << ", exp=" << currentTerm.exponent << std::endl;
             if (currentTerm.exponent == exponent)
             {
-                std::cout << "  Found existing term with same exponent" << std::endl;
                 double newCoefficient = currentTerm.coefficient + coefficient;
-                std::cout << "  New coefficient: " << newCoefficient << std::endl;
+
                 if(newCoefficient == 0.0)
                 {
-                    std::cout << "  Removing term (coefficient became 0)" << std::endl;
                     terms.remove(i);
                 }
                 else
                 {
-                    std::cout << "  Replacing term" << std::endl;
-                    terms.replace(i, Term(newCoefficient,exponent));
+                    terms.replace(i, Term(newCoefficient, exponent));
                 }
-                std::cout << "  Final list length: " << terms.getLength() << std::endl;
                 return;
             }
             if(exponent > currentTerm.exponent)
             {
-                std::cout << "  Inserting at position " << i << " (exponent " << exponent 
-                << " > " << currentTerm.exponent << ")" << std::endl;
                 terms.insert(i, newTerm);
-                std::cout << "  After insert - list length: " << terms.getLength() << std::endl;
                 return;
             }
         }
-        std::cout << "Inserting at end - position " << (terms.getLength() + 1) << std::endl;
-        terms.insert(terms.getLength() + 1, newTerm);
-        std::cout << "After insert - list length: " << terms.getLength() << std::endl;
-    }
-    void debugDump() const 
-    {
-        std::cout << "=== DEBUG DUMP ===" << std::endl;
-        std::cout << "List length: " << terms.getLength() << std::endl;
-        for (int i = 1; i <= terms.getLength(); i++) 
-        {
-            Term term = terms.getEntry(i);
-            std::cout << "Term " << i << ": coefficient=" << term.coefficient 
-                    << ", exponent=" << term.exponent << std::endl;
-        }
+        terms.insert(terms.getLength() + 1, newTerm);  
     }
 
     /**
@@ -163,22 +122,18 @@ public:
     double evaluate(double x) const 
     {
         // TODO: Implement evaluate
-
         if (terms.isEmpty())
         {
             return 0.0;
         }
         double result = 0.0;
 
-        int currentExponent = terms.getEntry(0).exponent;
-
-        for (int i = 1; i < terms.getLength(); i++)
+        for (int i = 1; i <= terms.getLength(); i++)  
         {
-            Term item_term = terms.getEntry(i);
-
-            result += item_term.coefficient * std::pow(x, item_term.exponent);
+            Term term = terms.getEntry(i);
+            result += term.coefficient * std::pow(x, term.exponent);
         }
-        return result;  // Placeholder
+        return result;
     }
 
     /**
@@ -193,8 +148,8 @@ public:
         if (terms.isEmpty())
         {
             return -1;
-        }   
-        return terms.getEntry(1).exponent;  // Placeholder
+        }
+        return terms.getEntry(1).exponent; 
     }
 
     /**
@@ -202,31 +157,18 @@ public:
      * @param exponent The exponent to query
      * @return The coefficient, or 0.0 if term doesn't exist
      */
-    double getCoefficient(int exponent) const {
+    double getCoefficient(int exponent) const 
+    {
         // TODO: Implement getCoefficient
-        
-        static int callCount = 0;
-        callCount++;
-        std::cout << "=== DEBUG getCoefficient CALL #" << callCount << " ===" << std::endl;
-        std::cout << "Looking for exponent: " << exponent << std::endl;
-        std::cout << "Total terms: " << terms.getLength() << std::endl;
-        
-        for (int i = 1; i < terms.getLength(); i++)
+        for (int i = 1; i <= terms.getLength(); i++) 
         {
             Term currentTerm = terms.getEntry(i);
-            std::cout << "Term " << i << ": coefficient=" << currentTerm.coefficient 
-            << ", exponent=" << currentTerm.exponent << std::endl;
-
             if (currentTerm.exponent == exponent)
             {
-                std::cout << "FOUND! Returning: " << currentTerm.coefficient << std::endl;
-                double result = currentTerm.coefficient;
-                std::cout << "Stored result: " << result << std::endl;
-                return result;
+                return currentTerm.coefficient;
             }
         }
-        std::cout << "NOT FOUND! Returning 0.0" << std::endl;
-        return 0.0;  // Placeholder
+        return 0.0;
     }
 
     /**
@@ -251,63 +193,58 @@ public:
      * - Omit "x^0" for constant: "5" not "5x^0"
      * - Special case: return "0" for zero polynomial
      */
-
-    //String function used for simplifying the coefficients of the 
-    //polynomial function. 
-
-
     std::string toString() const 
     {
+        // TODO: Implement toString
         if(terms.isEmpty())
         {
             return "0";
         }
 
         std::ostringstream oss;
-
         bool firstTerm = true;
 
         for (int i = 1; i <= terms.getLength(); i++)
         {
-            Term following_term = terms.getEntry(i);
+            Term term = terms.getEntry(i);
 
-            if (following_term.coefficient == 0.0)
+            if (term.coefficient == 0.0)
             {
                 continue;
             }
 
             if (!firstTerm)
             {
-                oss << (following_term.coefficient > 0 ? " + " : " - ");
+                oss << (term.coefficient > 0 ? " + " : " - ");
             }
-            else if (following_term.coefficient < 0)
+            else if (term.coefficient < 0)
             {
                 oss << "-";
             }
 
-            double absCoeff = std::abs(following_term.coefficient);
+            double absCoeff = std::abs(term.coefficient);
 
-            if (following_term.exponent == 0)
+            if (term.exponent == 0)
             {
                oss << absCoeff;
             }
             else
             {
-                // Variable term
                 if (absCoeff != 1.0)
                 {
                     oss << absCoeff;
                 }
                 oss << "x";
-                if(following_term.exponent > 1)
+                if(term.exponent > 1)
                 {
-                    oss << "^" << following_term.exponent;
+                    oss << "^" << term.exponent;
                 }
             }
             firstTerm = false;
         }
-    std::string result = oss.str();
-    return result.empty() ? "0" : result;
+        
+        std::string result = oss.str();
+        return result.empty() ? "0" : result;
     }
 
     /**
@@ -321,35 +258,25 @@ public:
     {
         // TODO: Implement derivative
         // For each term: coef*x^exp -> (exp*coef)*x^(exp-1)
-
-        Polynomial derr_function;
+        Polynomial deriv;
 
         if (terms.isEmpty())
         {
-            return derr_function;
+            return deriv;
         }
         
-        for (int i = 1; i < terms.getLength(); i++)
+        for (int i = 1; i <= terms.getLength(); i++)
         {
-            Term startingFunction = terms.getEntry(i);
+            Term term = terms.getEntry(i);
 
-            if (startingFunction.exponent == 0)
+            if (term.exponent > 0)
             {
-                continue;
+                double newCoefficient = term.exponent * term.coefficient;
+                int newExponent = term.exponent - 1;
+                deriv.addTerm(newCoefficient, newExponent);
             }
-            else if (startingFunction.exponent == 1)
-            {
-                derr_function.addTerm(startingFunction.coefficient, 0);
-            }
-            else
-            {
-                double newCoefficient = startingFunction.exponent * startingFunction.coefficient;
-                int newExponent = startingFunction.exponent - 1;
-                derr_function.addTerm(newCoefficient, newExponent);
-            }   
         }
-
-        return derr_function;  // Placeholder
+        return deriv;
     }
 
     /**
@@ -360,16 +287,15 @@ public:
     Polynomial operator+(const Polynomial& other) const 
     {
         // TODO: Implement operator+
-        Polynomial result_function = *this;
+        Polynomial result = *this;
 
-        for (int i = 1; i < other.terms.getLength(); i++)
+        for (int i = 1; i <= other.terms.getLength(); i++)
         {
-            Term sum_result = other.terms.getEntry(i);
-            result_function.addTerm(sum_result.coefficient,sum_result.exponent);
+            Term term = other.terms.getEntry(i);
+            result.addTerm(term.coefficient, term.exponent);
         }
-        return result_function;  // Placeholder
+        return result;
     }
-
     /**
      * @brief Subtract two polynomials using - operator
      * @param other The polynomial to subtract
@@ -377,15 +303,15 @@ public:
      */
     Polynomial operator-(const Polynomial& other) const 
     {
-        // TODO: Implement operator+
-        Polynomial result_function = *this;
+        // TODO: Implement operator-
+        Polynomial result = *this;
 
-        for (int i = 1; i < other.terms.getLength(); i++)
+        for (int i = 1; i <= other.terms.getLength(); i++)
         {
-            Term difference_result = other.terms.getEntry(i);
-            result_function.addTerm(-difference_result.coefficient,difference_result.exponent);
+            Term term = other.terms.getEntry(i);
+            result.addTerm(-term.coefficient, term.exponent);
         }
-        return result_function;  // Placeholder
+        return result;
     }
 
     /**
@@ -396,28 +322,25 @@ public:
      * Hint: Multiply each term in this by each term in other
      *       (a*x^m) * (b*x^n) = (a*b)*x^(m+n)
      */
+
     Polynomial operator*(const Polynomial& other) const 
     {
-        // TODO: Implement operator*
-        Polynomial result_function;
+     // TODO: Implement operator*
+        Polynomial result;
 
-        for (int i = 1; i < terms.getLength(); i++)
+        for (int i = 1; i <= terms.getLength(); i++)
         {
-            Term poly_func_one = terms.getEntry(i);
+            Term term1 = terms.getEntry(i);
 
-            for (int j = 1; j < other.terms.getLength(); j++)
+            for (int j = 1; j <= other.terms.getLength(); j++)
             {
-                Term poly_func_two = other.terms.getEntry(j);
-
-                double newCoefficient = poly_func_one.coefficient * poly_func_two.coefficient;
-                int newExponent = poly_func_one.exponent + poly_func_two.exponent;
-
-                result_function.addTerm(newCoefficient, newExponent);
+                Term term2 = other.terms.getEntry(j);
+                double newCoefficient = term1.coefficient * term2.coefficient;
+                int newExponent = term1.exponent + term2.exponent;
+                result.addTerm(newCoefficient, newExponent);
             }
-
         }
-
-        return result_function;  // Placeholder
+        return result;
     }
 };
 
