@@ -410,9 +410,28 @@ public:
      * Hint: Multiply each term in this by each term in other
      *       (a*x^m) * (b*x^n) = (a*b)*x^(m+n)
      */
-    Polynomial operator*(const Polynomial& other) const {
+    Polynomial operator*(const Polynomial& other) const 
+    {
         // TODO: Implement operator*
-        return Polynomial();  // Placeholder
+        Polynomial result_function;
+
+        for (int i = 0; i < terms.getLength(); i++)
+        {
+            Term poly_func_one = terms.getEntry(i);
+
+            for (int j = 0; i < terms.getLength(); i++)
+            {
+                Term poly_func_two = terms.getEntry(j);
+
+                double newCoefficient = poly_func_one.coefficient * poly_func_two.coefficient;
+                int newExponent = poly_func_one.exponent + poly_func_two.exponent;
+
+                result_function.addTerm(newCoefficient, newExponent);
+            }
+
+        }
+
+        return result_function;  // Placeholder
     }
 };
 
