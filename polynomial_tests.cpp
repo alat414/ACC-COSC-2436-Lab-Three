@@ -226,7 +226,7 @@ TEST_CASE("Polynomial - Derivative Constant") {
     Polynomial deriv = p.derivative();  // 0
     CHECK(deriv.isZero());
 }
-/*
+
 TEST_CASE("Polynomial - Derivative Linear") {
     Polynomial p;
     p.addTerm(3.0, 1);  // 3x
@@ -236,7 +236,7 @@ TEST_CASE("Polynomial - Derivative Linear") {
     CHECK(deriv.degree() == 0);
     CHECK(deriv.getCoefficient(0) == doctest::Approx(3.0));
 }
-
+/*
 TEST_CASE("Polynomial - Derivative Quadratic") {
     Polynomial p;
     p.addTerm(2.0, 2);  // 2x^2
