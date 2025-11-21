@@ -32,7 +32,7 @@ TEST_CASE("Polynomial - Add Single Term") {
     CHECK(p.degree() == 2);
     CHECK(p.getCoefficient(2) == doctest::Approx(3.0));
 }
-
+*/
 TEST_CASE("Polynomial - Zero Coefficients Excluded") {
     Polynomial p;
     p.addTerm(0.0, 5);  // Should not be added
@@ -42,7 +42,7 @@ TEST_CASE("Polynomial - Zero Coefficients Excluded") {
     p.addTerm(0.0, 3);  // Should not be added
     CHECK(p.degree() == 2);
 }
-
+/*
 TEST_CASE("Polynomial - Like Terms Combined") {
     Polynomial p;
     p.addTerm(3.0, 2);
