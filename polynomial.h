@@ -190,7 +190,9 @@ public:
             if (currentTerm.exponent == exponent)
             {
                 std::cout << "FOUND! Returning: " << currentTerm.coefficient << std::endl;
-                return currentTerm.coefficient;
+                double result = currentTerm.coefficient;
+                std::cout << "Stored result: " << result << std::endl;
+                return result;
             }
         }
         std::cout << "NOT FOUND! Returning 0.0" << std::endl;
