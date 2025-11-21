@@ -267,13 +267,13 @@ TEST_CASE("Polynomial - Derivative Zero Polynomial") {
     Polynomial deriv = p.derivative();
     CHECK(deriv.isZero());
 }
-/*
+
 TEST_CASE("Polynomial - toString Zero") {
     Polynomial p;
     std::string str = p.toString();
     CHECK(str == "0");
 }
-
+/*
 TEST_CASE("Polynomial - toString Single Term") {
     Polynomial p;
     p.addTerm(5.0, 3);
