@@ -16,6 +16,7 @@
 #include <cmath>
 #include <typeinfo>
 #include <algorithm>
+#include <cctype>
 
 
 // TODO: Define your Term structure
@@ -146,26 +147,9 @@ public:
         for (int i = 0; i < terms.getLength(); i++)
         {
             Term item_term = terms.getEntry(i);
-            while(currentExponent > item_term.exponent)
-            {
-                result *= x;
-                currentExponent--;
-            }
 
-            result += item_term.coefficient;
-            if (currentExponent > 0)
-            {
-                result *= x;
-                currentExponent--;
-            }
-
+            result += item_term.coefficient * std::pow(x, item_term.exponent);
         }
-        while(currentExponent > 0)
-        {
-            result *= x;
-            currentExponent--;
-        }
-
         return result;  // Placeholder
     }
 
@@ -173,26 +157,16 @@ public:
      * @brief Get the degree of the polynomial
      * @return The highest exponent, or -1 if polynomial is zero
      */
-    int degree() const {
+    int degree() const 
+    {
         // TODO: Implement degree
         // Hint: If list is empty, return -1
         //       Otherwise, return exponent of first term (highest degree)
-        
         if (terms.isEmpty())
         {
             return -1;
-        }
-        int highestDegreeVariable = terms.getEntry(0).exponent;
-
-        for (int i = 0; i < terms.getLength(); i++)
-        {
-            int currentExponent = terms.getEntry(i).exponent;
-            if (currentExponent > highestDegreeVariable)
-            {
-                highestDegreeVariable = currentExponent;
-            }
-        }    
-        return highestDegreeVariable;  // Placeholder
+        }   
+        return terms.getEntry(1).exponent;  // Placeholder
     }
 
     /**
@@ -207,7 +181,7 @@ public:
             return 0.0;
         }
 
-        for (int i = 0; i < terms.getLength(); i++)
+        for (int i = 1; i < terms.getLength(); i++)
         {
             Term currentTerm = terms.getEntry(i);
 
@@ -227,21 +201,7 @@ public:
     bool isZero() const 
     {
         // TODO: Implement isZero
-
-        if (terms.isEmpty())
-        {
-            return true;  // Placeholder
-        }
-
-        for (int i = 0; i < terms.getLength(); i++)
-        {
-            if(terms.getEntry(i).coefficient != 0.0)
-            {
-                return false;
-            }
-        }
-        return true;
-        
+        return terms.isEmpty();
     }
 
     /**
@@ -259,69 +219,60 @@ public:
 
     //String function used for simplifying the coefficients of the 
     //polynomial function. 
-    std::string formatCoefficient(double coeff) const
-    {
-        std::string str = std::to_string(coeff);
-        str.erase(str.find_last_not_of('0') + 1, std::string::npos);
-        if (str.back() == '.')
-        {
-            str.pop_back();
-        }
-        return str;
-    }
+
 
     std::string toString() const 
     {
-        // TODO: Implement toString
         if(terms.isEmpty())
         {
             return "0";
         }
 
-        std::string result;
+        std::ostringstream oss;
 
-        for (int i = 0; i < terms.getLength(); i++)
+        bool firstTerm = true;
+
+        for (int i = 1; i <= terms.getLength(); i++)
         {
-            Term variable = terms.getEntry(i);
+            Term term = terms.getEntry(i);
 
-            if (variable.coefficient == 0.0)
+            if (term.coefficient == 0.0)
             {
                 continue;
             }
 
-            if (!result.empty())
+            if (!firstTerm)
             {
-                result += (variable.coefficient > 0) ? " + " : " - ";
+                oss << (term.coefficient > 0 ? " + " : " - ");
+            }
+            else if (term.coefficient < 0)
+            {
+                oss << "-";
             }
 
-            else if(variable.coefficient < 0)
+            double absCoeff = std::abs(term.coefficient);
+
+            if (term.exponent == 0)
             {
-                result += "-";
-            }
-
-            double absCoeff = std::abs(variable.coefficient);
-
-            if (variable.exponent == 0)
-            {
-                result += formatCoefficient(absCoeff);
-
+               oss << absCoeff;
             }
             else
             {
+                // Variable term
                 if (absCoeff != 1.0)
                 {
-                    result += formatCoefficient(absCoeff);
+                    oss << absCoeff;
                 }
-
-                result += "x";
-                if (variable.exponent > 1)
+                oss << "x";
+                if(term.exponent > 1)
                 {
-                    result += "^" + std::to_string(variable.exponent);
+                    oss << "^" << term.exponent;
                 }
             }
-        
+            firstTerm = false;
         }
-        return result.empty() ? "0" : result;  // Placeholder
+    std::string result = oss.str();
+    return result.empty() ? "0" : result;
     }
 
     /**
@@ -419,9 +370,9 @@ public:
         {
             Term poly_func_one = terms.getEntry(i);
 
-            for (int j = 0; j < terms.getLength(); j++)
+            for (int j = 0; j < other.terms.getLength(); j++)
             {
-                Term poly_func_two = terms.getEntry(j);
+                Term poly_func_two = other.terms.getEntry(j);
 
                 double newCoefficient = poly_func_one.coefficient * poly_func_two.coefficient;
                 int newExponent = poly_func_one.exponent + poly_func_two.exponent;
