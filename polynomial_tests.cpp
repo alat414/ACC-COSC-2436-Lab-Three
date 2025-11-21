@@ -42,14 +42,14 @@ TEST_CASE("Polynomial - Zero Coefficients Excluded") {
     p.addTerm(0.0, 3);  // Should not be added
     CHECK(p.degree() == 2);
 }
-/*
+
 TEST_CASE("Polynomial - Like Terms Combined") {
     Polynomial p;
     p.addTerm(3.0, 2);
     p.addTerm(2.0, 2);  // Should combine with previous
     CHECK(p.getCoefficient(2) == doctest::Approx(5.0));
 }
-
+/*
 TEST_CASE("Polynomial - Terms Cancel to Zero") {
     Polynomial p;
     p.addTerm(5.0, 3);
