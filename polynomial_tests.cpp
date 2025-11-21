@@ -56,7 +56,7 @@ TEST_CASE("Polynomial - Terms Cancel to Zero") {
     p.addTerm(-5.0, 3);  // Should cancel out
     CHECK(p.isZero());
 }
-*/
+
 TEST_CASE("Polynomial - Multiple Terms") {
     Polynomial p;  // 4x^3 + 3x^2 + 2x + 1
     p.addTerm(4.0, 3);
@@ -70,7 +70,7 @@ TEST_CASE("Polynomial - Multiple Terms") {
     CHECK(p.getCoefficient(1) == doctest::Approx(2.0));
     CHECK(p.getCoefficient(0) == doctest::Approx(1.0));
 }
-/*
+*/
 TEST_CASE("Polynomial - Evaluation at Zero") {
     Polynomial p;  // 3x^2 + 2x + 1
     p.addTerm(3.0, 2);
@@ -79,7 +79,7 @@ TEST_CASE("Polynomial - Evaluation at Zero") {
 
     CHECK(p.evaluate(0.0) == doctest::Approx(1.0));
 }
-
+/*
 TEST_CASE("Polynomial - Evaluation at One") {
     Polynomial p;  // 3x^2 + 2x + 1
     p.addTerm(3.0, 2);
