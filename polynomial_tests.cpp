@@ -19,8 +19,6 @@ TEST_CASE("Polynomial - Add Single Term") {
     Polynomial p;
     p.addTerm(3.0, 2);
 
-    p.debugDump();
-
     CHECK_FALSE(p.isZero());
     CHECK(p.degree() == 2);
     CHECK(p.getCoefficient(2) == doctest::Approx(3.0));
