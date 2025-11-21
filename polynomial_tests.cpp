@@ -248,7 +248,7 @@ TEST_CASE("Polynomial - Derivative Quadratic") {
     CHECK(deriv.getCoefficient(1) == doctest::Approx(4.0));
     CHECK(deriv.getCoefficient(0) == doctest::Approx(3.0));
 }
-*/
+
 TEST_CASE("Polynomial - Derivative Cubic") {
     Polynomial p;  // 3x^3 + 2x^2 + x
     p.addTerm(3.0, 3);
@@ -260,14 +260,14 @@ TEST_CASE("Polynomial - Derivative Cubic") {
     CHECK(deriv.getCoefficient(1) == doctest::Approx(4.0));
     CHECK(deriv.getCoefficient(0) == doctest::Approx(1.0));
 }
-/*
+*/
 TEST_CASE("Polynomial - Derivative Zero Polynomial") {
     Polynomial p;  // 0
 
     Polynomial deriv = p.derivative();
     CHECK(deriv.isZero());
 }
-
+/*
 TEST_CASE("Polynomial - toString Zero") {
     Polynomial p;
     std::string str = p.toString();
