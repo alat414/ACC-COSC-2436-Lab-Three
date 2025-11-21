@@ -307,7 +307,7 @@ TEST_CASE("Polynomial - Copy Constructor") {
     CHECK(p2.getCoefficient(2) == p1.getCoefficient(2));
     CHECK(p2.getCoefficient(1) == p1.getCoefficient(1));
 }
-/*
+
 TEST_CASE("Polynomial - Assignment Operator") {
     Polynomial p1, p2;
     p1.addTerm(3.0, 2);
@@ -318,7 +318,7 @@ TEST_CASE("Polynomial - Assignment Operator") {
     CHECK(p2.getCoefficient(2) == p1.getCoefficient(2));
     CHECK(p2.getCoefficient(1) == p1.getCoefficient(1));
 }
-
+/*
 TEST_CASE("Polynomial - Chained Operations") {
     Polynomial p1, p2, p3;
     p1.addTerm(1.0, 1);  // x
