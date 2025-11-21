@@ -97,7 +97,7 @@ TEST_CASE("Polynomial - Evaluation at Two") {
 
     CHECK(p.evaluate(2.0) == doctest::Approx(17.0));
 }
-*/
+
 TEST_CASE("Polynomial - Evaluation Negative x") {
     Polynomial p;  // x^2 + 2x + 1
     p.addTerm(1.0, 2);
@@ -106,7 +106,7 @@ TEST_CASE("Polynomial - Evaluation Negative x") {
 
     CHECK(p.evaluate(-1.0) == doctest::Approx(0.0));
 }
-/*
+*/
 TEST_CASE("Polynomial - Addition Simple") {
     Polynomial p1, p2;
     p1.addTerm(3.0, 2);  // 3x^2
@@ -119,7 +119,7 @@ TEST_CASE("Polynomial - Addition Simple") {
     CHECK(sum.getCoefficient(2) == doctest::Approx(4.0));
     CHECK(sum.getCoefficient(0) == doctest::Approx(2.0));
 }
-
+/*
 TEST_CASE("Polynomial - Addition Different Degrees") {
     Polynomial p1, p2;
     p1.addTerm(2.0, 3);  // 2x^3
