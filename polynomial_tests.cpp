@@ -119,7 +119,7 @@ TEST_CASE("Polynomial - Addition Simple") {
     CHECK(sum.getCoefficient(2) == doctest::Approx(4.0));
     CHECK(sum.getCoefficient(0) == doctest::Approx(2.0));
 }
-*/
+
 TEST_CASE("Polynomial - Addition Different Degrees") {
     Polynomial p1, p2;
     p1.addTerm(2.0, 3);  // 2x^3
@@ -135,7 +135,7 @@ TEST_CASE("Polynomial - Addition Different Degrees") {
     CHECK(sum.getCoefficient(1) == doctest::Approx(1.0));
     CHECK(sum.getCoefficient(0) == doctest::Approx(1.0));
 }
-/*
+*/
 TEST_CASE("Polynomial - Subtraction Simple") {
     Polynomial p1, p2;
     p1.addTerm(5.0, 2);  // 5x^2
@@ -144,7 +144,7 @@ TEST_CASE("Polynomial - Subtraction Simple") {
     Polynomial diff = p1 - p2;  // 3x^2
     CHECK(diff.getCoefficient(2) == doctest::Approx(3.0));
 }
-
+/*
 TEST_CASE("Polynomial - Subtraction Result Zero") {
     Polynomial p1, p2;
     p1.addTerm(3.0, 2);  // 3x^2
