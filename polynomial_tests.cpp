@@ -24,6 +24,13 @@ TEST_CASE("Polynomial - Zero Polynomial") {
 TEST_CASE("Polynomial - Add Single Term") {
     Polynomial p;
     p.addTerm(3.0, 2);
+    std::cout << "=== AFTER addTerm ===" << std::endl;
+    std::cout << "isZero: " << p.isZero() << std::endl;
+    std::cout << "degree: " << p.degree() << std::endl;
+
+    double result = p.getCoefficient(2);
+    std::cout << "Direct call result: " << result << std::endl;
+    
     CHECK_FALSE(p.isZero());
     CHECK(p.degree() == 2);
     CHECK(p.getCoefficient(2) == doctest::Approx(3.0));
