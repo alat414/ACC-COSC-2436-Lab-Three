@@ -17,6 +17,7 @@
 #include <typeinfo>
 #include <algorithm>
 
+
 // TODO: Define your Term structure
 // Suggested structure:
 // struct Term {
@@ -390,29 +391,13 @@ public:
      */
     Polynomial operator-(const Polynomial& other) const 
     {
-        // TODO: Implement operator-
+        // TODO: Implement operator+
         Polynomial result_function = *this;
-
-        std::map<int,double> coefficientMap;
-
-        for (int i = 0; i < terms.getLength(); i++)
-        {
-            Term difference_result = terms.getEntry(i);
-            coefficientMap[difference_result.exponent] -= difference_result.coefficient;
-        }
 
         for (int i = 0; i < other.terms.getLength(); i++)
         {
             Term difference_result = other.terms.getEntry(i);
-            coefficientMap[difference_result.exponent] -= difference_result.coefficient;
-        }
-
-        for (const auto&[exponent, coefficient] : coefficientMap)
-        {
-            if (coefficient != 0.0)
-            {
-                result_function.addTerm(coefficient,exponent);
-            }
+            result_function.addTerm(-difference_result.coefficient,difference_result.exponent);
         }
         return result_function;  // Placeholder
     }
