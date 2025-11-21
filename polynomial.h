@@ -14,6 +14,7 @@
 #include <string>
 #include <sstream>
 #include <cmath>
+#include <iostream>
 
 
 // TODO: Define your Term structure
@@ -173,26 +174,26 @@ public:
      */
     double getCoefficient(int exponent) const {
         // TODO: Implement getCoefficient
-        if (terms.isEmpty())
+        
+        static int callCount = 0;
+        callCount++;
+        std::cout << "=== DEBUG getCoefficient CALL #" << callCount << " ===" << std::endl;
+        std::cout << "Looking for exponent: " << exponent << std::endl;
+        std::cout << "Total terms: " << terms.getLength() << std::endl;
+        
+        for (int i = 1; i < terms.getLength(); i++)
         {
-            return 0.0;
-        }
-
-        int length = terms.getLength();
-        for (int i = 1; i < length; i++)
-        {
-            if (i < 1 || i > length)
-            {
-                continue;
-            }
             Term currentTerm = terms.getEntry(i);
+            std::cout << "Term " << i << ": coefficient=" << currentTerm.coefficient 
+            << ", exponent=" << currentTerm.exponent << std::endl;
 
             if (currentTerm.exponent == exponent)
             {
+                std::cout << "FOUND! Returning: " << currentTerm.coefficient << std::endl;
                 return currentTerm.coefficient;
             }
         }
-        
+        std::cout << "NOT FOUND! Returning 0.0" << std::endl;
         return 0.0;  // Placeholder
     }
 
