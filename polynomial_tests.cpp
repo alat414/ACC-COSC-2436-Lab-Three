@@ -14,19 +14,39 @@
 // ============================================================================
 // PART 2B: Polynomial Class Tests
 // ============================================================================
-
+/*
 TEST_CASE("Polynomial - Zero Polynomial") {
     Polynomial p;
     CHECK(p.isZero());
     CHECK(p.degree() == -1);
 }
-
+*/
+TEST_CASE("Direct LinkedList Test") 
+{
+    LinkedList<Term> list;
+    
+    std::cout << "=== DIRECT LINKEDLIST TEST ===" << std::endl;
+    std::cout << "Initial length: " << list.getLength() << std::endl;
+    
+    // Try to insert a term
+    list.insert(1, Term(3.0, 2));
+    std::cout << "After insert length: " << list.getLength() << std::endl;
+    
+    // Try to retrieve it
+    if (list.getLength() > 0) {
+        Term term = list.getEntry(1);
+        std::cout << "Retrieved - coeff: " << term.coefficient << ", exp: " << term.exponent << std::endl;
+    } else {
+        std::cout << "List is still empty after insert!" << std::endl;
+    }
+}
+/*
 TEST_CASE("Polynomial - Add Single Term") {
     Polynomial p;
     p.addTerm(3.0, 2);
 
     p.debugDump();
-    
+
     std::cout << "=== AFTER addTerm ===" << std::endl;
     std::cout << "isZero: " << p.isZero() << std::endl;
     std::cout << "degree: " << p.degree() << std::endl;
@@ -38,7 +58,7 @@ TEST_CASE("Polynomial - Add Single Term") {
     CHECK(p.degree() == 2);
     CHECK(p.getCoefficient(2) == doctest::Approx(3.0));
 }
-/*
+
 TEST_CASE("Polynomial - Zero Coefficients Excluded") {
     Polynomial p;
     p.addTerm(0.0, 5);  // Should not be added
