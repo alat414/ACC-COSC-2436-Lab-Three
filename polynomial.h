@@ -349,7 +349,7 @@ public:
             {
                 continue;
             }
-            else (startingFunction.exponent == 1)
+            else if (startingFunction.exponent == 1)
             {
                 derr_function.addTerm(startingFunction.coefficient, 0);
             }
