@@ -282,7 +282,7 @@ TEST_CASE("Polynomial - toString Single Term") {
     CHECK(str.find("5") != std::string::npos);
     CHECK(str.find("3") != std::string::npos);
 }
-/*
+
 TEST_CASE("Polynomial - toString Multiple Terms") {
     Polynomial p;  // 3x^2 + 2x + 1
     p.addTerm(3.0, 2);
@@ -296,7 +296,7 @@ TEST_CASE("Polynomial - toString Multiple Terms") {
     CHECK(str.find("2") != std::string::npos);
     CHECK(str.find("1") != std::string::npos);
 }
-
+/*
 TEST_CASE("Polynomial - Copy Constructor") {
     Polynomial p1;
     p1.addTerm(3.0, 2);
