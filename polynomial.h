@@ -333,7 +333,35 @@ public:
     Polynomial derivative() const {
         // TODO: Implement derivative
         // For each term: coef*x^exp -> (exp*coef)*x^(exp-1)
-        return Polynomial();  // Placeholder
+
+        Polynomial derr_function;
+
+        if (terms.isEmpty())
+        {
+            derr_function;
+        }
+        
+        for (int i = 0; i < terms.getLength(); i++)
+        {
+            Term startingFunction = terms.getEntry(i);
+
+            if (startingFunction.exponent == 0)
+            {
+                continue;
+            }
+            else (startingFunction.exponent == 1)
+            {
+                derr_function.addTerm(startingFunction.coefficient, 0);
+            }
+            else
+            {
+                double newCoefficient = startingFunction.exponent * startingFunction.coefficient;
+                int newExponent = startingFunction.exponent - 1;
+                derr_function.addTerm(newCoefficient, newExponent);
+            }   
+        }
+
+        return derr_function;  // Placeholder
     }
 
     /**
