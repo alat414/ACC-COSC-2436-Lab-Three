@@ -84,43 +84,73 @@ public:
         // 4. If not found, insert in correct position (descending order)
         // 5. If resulting coefficient is zero, remove the term
 
+        std::cout << "=== DEBUG addTerm(" << coefficient << ", " << exponent << ") ===" << std::endl;
+        std::cout << "Initial list length: " << terms.getLength() << std::endl;
+    
         if (coefficient == 0.0)
-        {
+            {
+            std::cout << "Skipping zero coefficient" << std::endl;
             return;
         }
+        
         Term newTerm(coefficient, exponent);
 
         if(terms.isEmpty())
         {
-            terms.insert(1,newTerm);
+            std::cout << "List empty - inserting at position 1" << std::endl;
+            terms.insert(1, newTerm);
+            std::cout << "After insert - list length: " << terms.getLength() << std::endl;
             return;
         }
 
+        std::cout << "List not empty - checking existing terms:" << std::endl;
         for (int i = 1; i < terms.getLength(); i++)
         {
             Term currentTerm = terms.getEntry(i);
 
+            std::cout << "  Position " << i << ": coeff=" << currentTerm.coefficient 
+                << ", exp=" << currentTerm.exponent << std::endl;
             if (currentTerm.exponent == exponent)
             {
+                std::cout << "  Found existing term with same exponent" << std::endl;
                 double newCoefficient = currentTerm.coefficient + coefficient;
-
+                std::cout << "  New coefficient: " << newCoefficient << std::endl;
                 if(newCoefficient == 0.0)
                 {
+                    std::cout << "  Removing term (coefficient became 0)" << std::endl;
                     terms.remove(i);
                 }
                 else
                 {
+                    std::cout << "  Replacing term" << std::endl;
                     terms.replace(i, Term(newCoefficient,exponent));
                 }
+                std::cout << "  Final list length: " << terms.getLength() << std::endl;
                 return;
             }
             if(exponent > currentTerm.exponent)
             {
+                std::cout << "  Inserting at position " << i << " (exponent " << exponent 
+                << " > " << currentTerm.exponent << ")" << std::endl;
                 terms.insert(i, newTerm);
+                std::cout << "  After insert - list length: " << terms.getLength() << std::endl;
                 return;
             }
         }
+        std::cout << "Inserting at end - position " << (terms.getLength() + 1) << std::endl;
         terms.insert(terms.getLength() + 1, newTerm);
+        std::cout << "After insert - list length: " << terms.getLength() << std::endl;
+    }
+    void debugDump() const 
+    {
+        std::cout << "=== DEBUG DUMP ===" << std::endl;
+        std::cout << "List length: " << terms.getLength() << std::endl;
+        for (int i = 1; i <= terms.getLength(); i++) 
+        {
+            Term term = terms.getEntry(i);
+            std::cout << "Term " << i << ": coefficient=" << term.coefficient 
+                    << ", exponent=" << term.exponent << std::endl;
+        }
     }
 
     /**
