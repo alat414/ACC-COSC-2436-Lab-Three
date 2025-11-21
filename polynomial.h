@@ -14,9 +14,6 @@
 #include <string>
 #include <sstream>
 #include <cmath>
-#include <typeinfo>
-#include <algorithm>
-#include <cctype>
 
 
 // TODO: Define your Term structure
@@ -166,7 +163,7 @@ public:
         {
             return -1;
         }   
-        return terms.getEntry(1).exponent;  // Placeholder
+        return terms.getEntry(0).exponent;  // Placeholder
     }
 
     /**
@@ -181,7 +178,7 @@ public:
             return 0.0;
         }
 
-        for (int i = 1; i < terms.getLength(); i++)
+        for (int i = 0; i < terms.getLength(); i++)
         {
             Term currentTerm = terms.getEntry(i);
 
@@ -232,7 +229,7 @@ public:
 
         bool firstTerm = true;
 
-        for (int i = 1; i <= terms.getLength(); i++)
+        for (int i = 0; i <= terms.getLength(); i++)
         {
             Term term = terms.getEntry(i);
 
