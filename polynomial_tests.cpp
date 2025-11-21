@@ -296,7 +296,7 @@ TEST_CASE("Polynomial - toString Multiple Terms") {
     CHECK(str.find("2") != std::string::npos);
     CHECK(str.find("1") != std::string::npos);
 }
-/*
+
 TEST_CASE("Polynomial - Copy Constructor") {
     Polynomial p1;
     p1.addTerm(3.0, 2);
@@ -307,7 +307,7 @@ TEST_CASE("Polynomial - Copy Constructor") {
     CHECK(p2.getCoefficient(2) == p1.getCoefficient(2));
     CHECK(p2.getCoefficient(1) == p1.getCoefficient(1));
 }
-
+/*
 TEST_CASE("Polynomial - Assignment Operator") {
     Polynomial p1, p2;
     p1.addTerm(3.0, 2);
