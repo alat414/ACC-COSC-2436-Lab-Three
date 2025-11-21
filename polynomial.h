@@ -178,8 +178,13 @@ public:
             return 0.0;
         }
 
-        for (int i = 1; i < terms.getLength(); i++)
+        int length = terms.getLength();
+        for (int i = 1; i < length; i++)
         {
+            if (i < 1 || i > length)
+            {
+                continue;
+            }
             Term currentTerm = terms.getEntry(i);
 
             if (currentTerm.exponent == exponent)
