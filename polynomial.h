@@ -85,7 +85,7 @@ public:
         // 4. If not found, insert in correct position (descending order)
         // 5. If resulting coefficient is zero, remove the term
 
-        if (coefficient <= 0)
+        if (coefficient == 0.0)
         {
             return;
         }
@@ -139,7 +139,7 @@ public:
         {
             return 0.0;
         }
-        double result;
+        double result = 0.0;
 
         int currentExponent = terms.getEntry(0).exponent;
 
@@ -213,7 +213,7 @@ public:
 
             if (currentTerm.exponent == exponent)
             {
-                return currentTerm.exponent;
+                return currentTerm.coefficient;
             }
         }
         
@@ -340,7 +340,7 @@ public:
 
         if (terms.isEmpty())
         {
-            derr_function;
+            return derr_function;
         }
         
         for (int i = 0; i < terms.getLength(); i++)
@@ -419,7 +419,7 @@ public:
         {
             Term poly_func_one = terms.getEntry(i);
 
-            for (int j = 0; i < terms.getLength(); i++)
+            for (int j = 0; j < terms.getLength(); j++)
             {
                 Term poly_func_two = terms.getEntry(j);
 
