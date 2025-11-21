@@ -330,7 +330,8 @@ public:
      * Hint: Derivative of ax^n is (n*a)x^(n-1)
      *       Derivative of constant is 0
      */
-    Polynomial derivative() const {
+    Polynomial derivative() const 
+    {
         // TODO: Implement derivative
         // For each term: coef*x^exp -> (exp*coef)*x^(exp-1)
 
@@ -369,9 +370,17 @@ public:
      * @param other The polynomial to add
      * @return A new polynomial representing this + other
      */
-    Polynomial operator+(const Polynomial& other) const {
+    Polynomial operator+(const Polynomial& other) const 
+    {
         // TODO: Implement operator+
-        return Polynomial();  // Placeholder
+        Polynomial result_function = *this;
+
+        for (int i = 0; i < other.terms.getLength(); i++)
+        {
+            Term sum_result = other.terms.getEntry(i);
+            result_function.addTerm(sum_result.coefficient,sum_result.exponent);
+        }
+        return result_function;  // Placeholder
     }
 
     /**
@@ -379,9 +388,33 @@ public:
      * @param other The polynomial to subtract
      * @return A new polynomial representing this - other
      */
-    Polynomial operator-(const Polynomial& other) const {
+    Polynomial operator-(const Polynomial& other) const 
+    {
         // TODO: Implement operator-
-        return Polynomial();  // Placeholder
+        Polynomial result_function = *this;
+
+        std::map<int,double> coefficientMap;
+
+        for (int i = 0; i < terms.getLength(); i++)
+        {
+            Term difference_result = terms.getEntry(i);
+            coefficientMap[difference_result.exponent] -= difference_result.coefficient;
+        }
+
+        for (int i = 0; i < other.terms.getLength(); i++)
+        {
+            Term difference_result = other.terms.getEntry(i);
+            coefficientMap[difference_result.exponent] -= difference_result.coefficient;
+        }
+
+        for (const auto&[exponent, coefficient] : coefficientMap)
+        {
+            if (coefficient != 0.0)
+            {
+                result_function.addTerm(coefficient,exponent);
+            }
+        }
+        return result_function;  // Placeholder
     }
 
     /**
