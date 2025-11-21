@@ -273,7 +273,7 @@ TEST_CASE("Polynomial - toString Zero") {
     std::string str = p.toString();
     CHECK(str == "0");
 }
-/*
+
 TEST_CASE("Polynomial - toString Single Term") {
     Polynomial p;
     p.addTerm(5.0, 3);
@@ -282,7 +282,7 @@ TEST_CASE("Polynomial - toString Single Term") {
     CHECK(str.find("5") != std::string::npos);
     CHECK(str.find("3") != std::string::npos);
 }
-
+/*
 TEST_CASE("Polynomial - toString Multiple Terms") {
     Polynomial p;  // 3x^2 + 2x + 1
     p.addTerm(3.0, 2);
