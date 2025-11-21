@@ -231,25 +231,25 @@ public:
 
         for (int i = 0; i <= terms.getLength(); i++)
         {
-            Term term = terms.getEntry(i);
+            Term following_term = terms.getEntry(i);
 
-            if (term.coefficient == 0.0)
+            if (following_term.coefficient == 0.0)
             {
                 continue;
             }
 
             if (!firstTerm)
             {
-                oss << (term.coefficient > 0 ? " + " : " - ");
+                oss << (following_term.coefficient > 0 ? " + " : " - ");
             }
-            else if (term.coefficient < 0)
+            else if (following_term.coefficient < 0)
             {
                 oss << "-";
             }
 
-            double absCoeff = std::abs(term.coefficient);
+            double absCoeff = std::abs(following_term.coefficient);
 
-            if (term.exponent == 0)
+            if (following_term.exponent == 0)
             {
                oss << absCoeff;
             }
@@ -261,9 +261,9 @@ public:
                     oss << absCoeff;
                 }
                 oss << "x";
-                if(term.exponent > 1)
+                if(following_term.exponent > 1)
                 {
-                    oss << "^" << term.exponent;
+                    oss << "^" << following_term.exponent;
                 }
             }
             firstTerm = false;
