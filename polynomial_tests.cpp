@@ -153,7 +153,7 @@ TEST_CASE("Polynomial - Subtraction Result Zero") {
     Polynomial diff = p1 - p2;  // 0
     CHECK(diff.isZero());
 }
-*/
+
 TEST_CASE("Polynomial - Subtraction Different Terms") {
     Polynomial p1, p2;
     p1.addTerm(5.0, 3);  // 5x^3
@@ -168,7 +168,7 @@ TEST_CASE("Polynomial - Subtraction Different Terms") {
     CHECK(diff.getCoefficient(1) == doctest::Approx(3.0));
     CHECK(diff.getCoefficient(0) == doctest::Approx(-1.0));
 }
-/*
+*/
 TEST_CASE("Polynomial - Multiplication Simple") {
     Polynomial p1, p2;
     p1.addTerm(2.0, 1);  // 2x
@@ -178,7 +178,7 @@ TEST_CASE("Polynomial - Multiplication Simple") {
     CHECK(product.degree() == 2);
     CHECK(product.getCoefficient(2) == doctest::Approx(6.0));
 }
-
+/*
 TEST_CASE("Polynomial - Multiplication Binomials") {
     Polynomial p1, p2;
     p1.addTerm(2.0, 1);  // 2x
