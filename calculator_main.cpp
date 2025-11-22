@@ -26,179 +26,183 @@
 
 #include "polynomial.h"
 
-using namespace std;
+// removed namespace std.
 
-class PolynomialCalculator {
-private:
-    map<string, Polynomial> polynomials;
+class PolynomialCalculator 
+{
+    private:
+        std::map<std::string, Polynomial> polynomials;
 
-    void showHelp() {
-        cout << "\n=== Polynomial Calculator Commands ===\n";
-        cout << "POLY <name> <num_terms>      - Create polynomial (then enter terms)\n";
-        cout << "PRINT <name>                 - Display polynomial\n";
-        cout << "EVAL <name> <x>              - Evaluate polynomial at x\n";
-        cout << "ADD <p1> <p2> <result>       - Add two polynomials\n";
-        cout << "SUB <p1> <p2> <result>       - Subtract polynomials\n";
-        cout << "MULT <p1> <p2> <result>      - Multiply polynomials\n";
-        cout << "DERIV <name> <result>        - Compute derivative\n";
-        cout << "DEGREE <name>                - Show polynomial degree\n";
-        cout << "LIST                         - List all stored polynomials\n";
-        cout << "HELP                         - Show this help message\n";
-        cout << "QUIT                         - Exit calculator\n";
-        cout << "=====================================\n\n";
-    }
+        void showHelp() 
+        {
+            std::cout << "\n=== Polynomial Calculator Commands ===\n";
+            std::cout << "POLY <name> <num_terms>      - Create polynomial (then enter terms)\n";
+            std::cout << "PRINT <name>                 - Display polynomial\n";
+            std::cout << "EVAL <name> <x>              - Evaluate polynomial at x\n";
+            std::cout << "ADD <p1> <p2> <result>       - Add two polynomials\n";
+            std::cout << "SUB <p1> <p2> <result>       - Subtract polynomials\n";
+            std::cout << "MULT <p1> <p2> <result>      - Multiply polynomials\n";
+            std::cout << "DERIV <name> <result>        - Compute derivative\n";
+            std::cout << "DEGREE <name>                - Show polynomial degree\n";
+            std::cout << "LIST                         - List all stored polynomials\n";
+            std::cout << "HELP                         - Show this help message\n";
+            std::cout << "QUIT                         - Exit calculator\n";
+            std::cout << "=====================================\n\n";
+        }
 
-    bool polynomialExists(const string& name) {
-        return polynomials.find(name) != polynomials.end();
-    }
+        bool polynomialExists(const std::string& name) 
+        {
+            return polynomials.find(name) != polynomials.end();
+        }
 
-    // TODO: Implement this method
-    // Read numTerms pairs of (coefficient, exponent) from cin
-    // Create a polynomial and store it in the map with the given name
-    void createPolynomial(const string& name, int numTerms) {
+        // TODO: Implement this method
+        // Read numTerms pairs of (coefficient, exponent) from cin
+        // Create a polynomial and store it in the map with the given name
+        void createPolynomial(const std::string& name, int numTerms) 
+        {
 
-    }
+        }
 
-    // TODO: Implement this method
-    // Print the polynomial with the given name
-    void printPolynomial(const string& name) {
-    }
+        // TODO: Implement this method
+        // Print the polynomial with the given name
+        void printPolynomial(const std::string& name) {
+        }
 
-    // TODO: Implement this method
-    // Evaluate the polynomial at the given x value
-    void evaluatePolynomial(const string& name, double x) {
-    }
+        // TODO: Implement this method
+        // Evaluate the polynomial at the given x value
+        void evaluatePolynomial(const std::string& name, double x) {
+        }
 
-    // TODO: Implement this method
-    // Add two polynomials and store result
-    void addPolynomials(const string& name1, const string& name2, const string& result) {
+        // TODO: Implement this method
+        // Add two polynomials and store result
+        void addPolynomials(const std::string& name1, const std::string& name2, const std::string& result) {
 
-    }
+        }
 
-    // TODO: Implement this method
-    // Subtract two polynomials and store result
-    void subtractPolynomials(const string& name1, const string& name2, const string& result) {
-    }
+        // TODO: Implement this method
+        // Subtract two polynomials and store result
+        void subtractPolynomials(const std::string& name1, const std::string& name2, const std::string& result) {
+        }
 
-    // TODO: Implement this method
-    // Multiply two polynomials and store result
-    void multiplyPolynomials(const string& name1, const string& name2, const string& result) {
+        // TODO: Implement this method
+        // Multiply two polynomials and store result
+        void multiplyPolynomials(const std::string& name1, const std::string& name2, const std::string& result) {
 
-    }
+        }
 
-    // TODO: Implement this method
-    // Compute derivative of polynomial and store result
-    void derivativePolynomial(const string& name, const string& result) {
+        // TODO: Implement this method
+        // Compute derivative of polynomial and store result
+        void derivativePolynomial(const std::string& name, const std::string& result) {
 
-    }
+        }
 
-    // TODO: Implement this method
-    // Show the degree of the polynomial
-    void showDegree(const string& name) {
+        // TODO: Implement this method
+        // Show the degree of the polynomial
+        void showDegree(const std::string& name) {
 
-    }
+        }
 
-    // TODO: Implement this method
-    // List all stored polynomials
-    void listPolynomials() {
+        // TODO: Implement this method
+        // List all stored polynomials
+        void listPolynomials() {
 
-    }
+        }
 
-public:
-    void run() {
-        cout << "===========================================\n";
-        cout << "  Polynomial Calculator - COSC 2436 Lab 3  \n";
-        cout << "===========================================\n";
-        cout << "Type HELP for list of commands.\n\n";
-        cout.flush();
+    public:
+        void run() {
+            std::cout << "===========================================\n";
+            std::cout << "  Polynomial Calculator - COSC 2436 Lab 3  \n";
+            std::cout << "===========================================\n";
+            std::cout << "Type HELP for list of commands.\n\n";
+            std::cout.flush();
 
-        string command;
-        while (true) {
-            cout << "> " << flush;
+            std::string command;
+            while (true) {
+                std::cout << "> " << std::flush;
 
-            // Check cin state before reading
-            if (cin.fail()) {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            }
-
-            if (!(cin >> command)) {
-                break; // End of input
-            }
-
-            // Convert command to uppercase for case-insensitive matching
-            for (char& c : command) {
-                c = toupper(c);
-            }
-
-            try {
-                if (command == "QUIT" || command == "EXIT") {
-                    cout << "Goodbye!\n";
-                    break;
+                // Check cin state before reading
+                if (std::cin.fail()) {
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 }
-                else if (command == "HELP") {
-                    showHelp();
+
+                if (!(std::cin >> command)) {
+                    break; // End of input
                 }
-                else if (command == "LIST") {
-                    listPolynomials();
+
+                // Convert command to uppercase for case-insensitive matching
+                for (char& c : command) {
+                    c = toupper(c);
                 }
-                else if (command == "POLY") {
-                    string name;
-                    int numTerms;
-                    cin >> name >> numTerms;
-                    createPolynomial(name, numTerms);
+
+                try {
+                    if (command == "QUIT" || command == "EXIT") {
+                        std::cout << "Goodbye!\n";
+                        break;
+                    }
+                    else if (command == "HELP") {
+                        showHelp();
+                    }
+                    else if (command == "LIST") {
+                        listPolynomials();
+                    }
+                    else if (command == "POLY") {
+                        std::string name;
+                        int numTerms;
+                        std::cin >> name >> numTerms;
+                        createPolynomial(name, numTerms);
+                    }
+                    else if (command == "PRINT") {
+                        std::string name;
+                        std::cin >> name;
+                        printPolynomial(name);
+                    }
+                    else if (command == "EVAL") {
+                        std::string name;
+                        double x;
+                        std::cin >> name >> x;
+                        evaluatePolynomial(name, x);
+                    }
+                    else if (command == "ADD") {
+                        std::string name1, name2, result;
+                        std::cin >> name1 >> name2 >> result;
+                        addPolynomials(name1, name2, result);
+                    }
+                    else if (command == "SUB") {
+                        std::string name1, name2, result;
+                        std::cin >> name1 >> name2 >> result;
+                        subtractPolynomials(name1, name2, result);
+                    }
+                    else if (command == "MULT") {
+                        std::string name1, name2, result;
+                        std::cin >> name1 >> name2 >> result;
+                        multiplyPolynomials(name1, name2, result);
+                    }
+                    else if (command == "DERIV") {
+                        std::string name, result;
+                        std::cin >> name >> result;
+                        derivativePolynomial(name, result);
+                    }
+                    else if (command == "DEGREE") {
+                        std::string name;
+                        std::cin >> name;
+                        showDegree(name);
+                    }
+                    else {
+                        std::cout << "Unknown command: " << command << "\n";
+                        std::cout << "Type HELP for list of commands.\n";
+                        // Clear rest of line
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                    }
                 }
-                else if (command == "PRINT") {
-                    string name;
-                    cin >> name;
-                    printPolynomial(name);
+                catch (const std::exception& e) {
+                    std::cout << "Error: " << e.what() << "\n";
+                    // Clear error state and rest of line
+                    std::cin.clear();
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 }
-                else if (command == "EVAL") {
-                    string name;
-                    double x;
-                    cin >> name >> x;
-                    evaluatePolynomial(name, x);
-                }
-                else if (command == "ADD") {
-                    string name1, name2, result;
-                    cin >> name1 >> name2 >> result;
-                    addPolynomials(name1, name2, result);
-                }
-                else if (command == "SUB") {
-                    string name1, name2, result;
-                    cin >> name1 >> name2 >> result;
-                    subtractPolynomials(name1, name2, result);
-                }
-                else if (command == "MULT") {
-                    string name1, name2, result;
-                    cin >> name1 >> name2 >> result;
-                    multiplyPolynomials(name1, name2, result);
-                }
-                else if (command == "DERIV") {
-                    string name, result;
-                    cin >> name >> result;
-                    derivativePolynomial(name, result);
-                }
-                else if (command == "DEGREE") {
-                    string name;
-                    cin >> name;
-                    showDegree(name);
-                }
-                else {
-                    cout << "Unknown command: " << command << "\n";
-                    cout << "Type HELP for list of commands.\n";
-                    // Clear rest of line
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }
-            }
-            catch (const exception& e) {
-                cout << "Error: " << e.what() << "\n";
-                // Clear error state and rest of line
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
         }
-    }
 };
 
 int main() {
