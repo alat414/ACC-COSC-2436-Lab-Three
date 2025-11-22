@@ -93,7 +93,16 @@ class PolynomialCalculator
 
         // TODO: Implement this method
         // Print the polynomial with the given name
-        void printPolynomial(const std::string& name) {
+        void printPolynomial(const std::string& name) 
+        {
+
+            if (!polynomialExists(name))
+            {
+                std::cout << "No variables on function " << name << "cannot print function " << std::endl;
+                return;
+            }
+            const Polynomial& polynomial_function = polynomials[name];
+            std::cout << name << "=" << polynomial_function.toString() << std::endl;
         }
 
         // TODO: Implement this method
