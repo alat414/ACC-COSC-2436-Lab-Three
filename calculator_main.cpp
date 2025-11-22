@@ -113,9 +113,16 @@ class PolynomialCalculator
             {
                 std::cout << "Value is zero, the result is zero." << std::endl;
             }
-            Polynomial polynomial_function;
+
+            auto polynomial_function = polynomials.find(name);
+            if (polynomial_function == polynomials.end())
+            {
+                std::cout << "Error: Polynomial does not exist " << name << "not found" << std::endl;
+                return;
+            }
         
-            double result = polynomial_function.getCoefficient(pow(value, polynomial_function.degree()));
+            double result = polynomial_function -> second.evaluate(value);
+            std::cout << name << "(" << value << ")" << result << std::endl;
         }
 
         // TODO: Implement this method
