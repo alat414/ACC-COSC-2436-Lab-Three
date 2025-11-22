@@ -191,13 +191,55 @@ class PolynomialCalculator
 
         // TODO: Implement this method
         // Multiply two polynomials and store result
-        void multiplyPolynomials(const std::string& name1, const std::string& name2, const std::string& result) {
+        void multiplyPolynomials(const std::string& name1, const std::string& name2, const std::string& result) 
+        {
+            if (polynomials.count(name1) == 0)
+            {
+                std::cout << "Error: Polynomial one " << name1 << " does not exist " << std::endl;
+                return;
+            }
+
+            if (polynomials.count(name2) == 0)
+            {
+                std::cout << "Error: Polynomial two " << name2 << " does not exist " << std::endl;
+                return;
+            }
+
+            if (polynomials.count(result) > 0)
+            {
+                std::cout << "Overwriting existing polynomial  " << result  << std::endl;
+            }
+
+            Polynomial function_result = polynomials[name1] * polynomials[name2];
+
+            polynomials[result] = function_result;
+
+            std::cout << name1 << " (x) = " << polynomials[name1].toString() << std::endl;
+            std::cout << name2 << " (x) = " << polynomials[name2].toString() << std::endl;
+            std::cout << result << " (x) = " << function_result.toString() << std::endl;
 
         }
 
         // TODO: Implement this method
         // Compute derivative of polynomial and store result
-        void derivativePolynomial(const std::string& name, const std::string& result) {
+        void derivativePolynomial(const std::string& name, const std::string& result) 
+        {
+            if(!polynomialExists(name))
+            {
+                std::cout << "No polynomial function to take the derivative. " << std::endl;
+                return;
+            }
+
+            if (polynomials.count(result) > 0)
+            {
+                std::cout << "Overwriting existing polynomial  " << result  << std::endl;
+            }
+
+            Polynomial function_result = polynomials[name].derivative();
+            polynomials[result] = function_result;
+
+            std::cout << name << " (x) = " << polynomials[name].toString() << std::endl;
+            std::cout << result << " (x) = " << function_result.toString() << std::endl;
 
         }
 
