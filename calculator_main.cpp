@@ -60,6 +60,34 @@ class PolynomialCalculator
         // Create a polynomial and store it in the map with the given name
         void createPolynomial(const std::string& name, int numTerms) 
         {
+            if (numTerms <= 0)
+            {
+                std::cout << "cannot have negative number of variables." << std::endl;
+                return;
+            }
+            Polynomial polynomial_function;
+
+            for (int i = 0; i <= numTerms; i++)
+            {
+                double coefficient;
+                int exponent;
+
+                std::cout << "Term " << i << std::endl;
+                std::cin >> coefficient >> exponent;
+
+                if (std::cin.fail())
+                {
+                    std::cout << "Invalid input, numbers only " << std::endl;
+                    std::cin.clear();
+                    std::cin.ignore(1000, '\n');
+                    i--;
+                    continue;
+                }
+                polynomial_function.addTerm(coefficient, exponent);
+            }
+            
+            polynomials[name] = polynomial_function;
+            std::cout << "Polynomal: " << name << "created " << polynomial_function.toString() << std::endl;
 
         }
 
