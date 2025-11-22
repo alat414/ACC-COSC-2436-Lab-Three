@@ -107,7 +107,15 @@ class PolynomialCalculator
 
         // TODO: Implement this method
         // Evaluate the polynomial at the given x value
-        void evaluatePolynomial(const std::string& name, double x) {
+        void evaluatePolynomial(const std::string& name, double value) 
+        {
+            if(value == 0.0)
+            {
+                std::cout << "Value is zero, the result is zero." << std::endl;
+            }
+            Polynomial polynomial_function;
+        
+            double result = polynomial_function.getCoefficient(pow(value, polynomial_function.degree()));
         }
 
         // TODO: Implement this method
