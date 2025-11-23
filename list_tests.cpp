@@ -78,6 +78,11 @@ TEST_CASE("Test for remove function and replace function calls")
         CHECK(ListOne.getEntry(2)==24);
         CHECK(ListOne.getLength()==2);
     }
+    ListOne.remove(2);
+    SUBCASE("testing for removed item in link list")
+    {
+        CHECK(ListOne.getLength()==1);
+    }
     ListOne.clear();
     SUBCASE("testing for no items in link list")
     {
