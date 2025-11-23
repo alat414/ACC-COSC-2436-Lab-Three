@@ -40,7 +40,7 @@ TEST_CASE("Link List Implementation")
 {
     LinkedList<int> List;
 
-    SUBCASE("Verifying the inser of the Link List")
+    SUBCASE("Verifying the insert of the Link List")
     {
         CHECK(List.insert(1,8));
         CHECK(List.insert(2,3));
