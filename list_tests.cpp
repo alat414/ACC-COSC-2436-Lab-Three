@@ -34,6 +34,13 @@ TEST_CASE("Testing ArrayList Implementations")
         CHECK(list.remove(1));
         CHECK(list.isEmpty());
     }
+    SUBCASE("Verifying the insert, lenngth, clear, and empty tests of the ArrayList")
+    {
+        CHECK(list.insert(1,3));
+        CHECK(list.getEntry(1) == 3);
+        list.clear();
+        CHECK(list.isEmpty());
+    }
 }
 
 TEST_CASE("Link List Implementation")
