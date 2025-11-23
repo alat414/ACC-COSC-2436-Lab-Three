@@ -245,15 +245,40 @@ class PolynomialCalculator
 
         // TODO: Implement this method
         // Show the degree of the polynomial
-        void showDegree(const std::string& name) {
+        void showDegree(const std::string& name) 
+        {
+            if(polynomials.find(name) == polynomials.end())
+            {
+                std::cout << "No polynomial function to take the degree. " << std::endl;
+                return;
+            }
+
+            int polynomial_degree = polynomials[name].degree();
+            
+            std::cout << name << " Highest degree of the polynomial is:  " << polynomial_degree << std::endl;
 
         }
 
         // TODO: Implement this method
         // List all stored polynomials
-        void listPolynomials() {
+        void listPolynomials() 
+        {
+            if(polynomials.empty())
+            {
+                std::cout << "No polynomial function to print. " << std::endl;
+                return;
+            }
+            
+            std::cout << "\n Stored Polynomial Functions" << std::endl;
 
+            for (const auto& [name, poly] : polynomials)
+            {
+                std::cout << name << " (x) = " << poly.toString() << std::endl;
+            }
+            std::cout << " Total variables:  " << polynomials.size() << " polynomial(s)" << std::endl;
         }
+
+    
 
     public:
         void run() {
